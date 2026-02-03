@@ -1,21 +1,3 @@
-I'll examine the tasks folder structure you mentioned and then redraft the plan with your updates.
-
-Searched codebase for "package-py-fatigue tasks invoke folder structure", 29 results
-
-Searched for files matching `**/tasks/**`, 11 matches
-
-Searched for regex `invoke|tasks\.py`, 12 results
-
-Read [](file:///home/pietro.dantuono%4024SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/tasks/__init__.py)
-
-Read [](file:///home/pietro.dantuono%4024SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/tasks/test.py)
-
-Read [](file:///home/pietro.dantuono%4024SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/tasks/quality.py)
-
-Read [](file:///home/pietro.dantuono%4024SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/tasks/docs.py)
-
-Searched for files matching `**/invoke.y*ml`, no matches
-
 # Migration Plan: OWI-Metadatabase Namespace Package (Updated)
 
 ## 📋 Executive Summary
@@ -723,7 +705,19 @@ jobs:
           path: site/
 ```
 
-### 6.2 PyPI Publishing
+### 6.2 CI Workflow Hardening
+- [x] Add concurrency group to cancel in-progress runs on new commits
+- [x] Enable pip/uv cache for dependency install speed
+- [x] Pin action versions and enforce minimum permissions
+- [x] Upload coverage report artifact for post-run inspection
+
+### 6.3 Documentation Deployment Workflow
+- [x] Add docs workflow to build and publish versioned site with `mike` to GitHub Pages
+- [x] Deploy only on tagged releases and main branch updates
+- [x] Keep docs build strict (`mkdocs build --strict`) in CI
+- [x] Store docs preview as artifact for pull requests
+
+### 6.4 PyPI Publishing
 ```yaml
 # .github/workflows/release.yml
 name: Publish to PyPI
@@ -744,7 +738,7 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@release/v1
 ```
 
-### 6.3 Version Management
+    ### 6.5 Version Management
 - [ ] Use `uv version` for version bumps
 - [ ] Dynamic version from `_version.py`
 - [ ] Automated changelog generation
@@ -1114,50 +1108,6 @@ from owi.metadatabase.locations.io import LocationsAPI
 ```
 
 ## ⚠️ Risk Assessment
-
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Breaking changes for existing users | **High** | Clear migration guide, detailed changelog |
-| Namespace import issues | **Medium** | Comprehensive testing, PEP 420 compliance |
-| Dependency conflicts | **Medium** | UV lock files, matrix testing |
-| Doctest maintenance overhead | **Medium** | Clear contributor guidelines, CI enforcement |
-| MkDocs learning curve | **Low** | Simple markdown, excellent docs |
-
-## 🎁 Nice-to-Have Features
-
-- [ ] **Auto-generated changelog** using `git-cliff`
-- [ ] **Codecov integration** for coverage visualization
-- [ ] **Dependabot** for automated dependency updates
-- [ ] **Security scanning** with `bandit`
-- [ ] **Performance benchmarks** using `pytest-benchmark`
-- [ ] **API versioning** strategy (semantic versioning)
-- [ ] **Contributor guide** with development setup
-- [ ] **Issue/PR templates** for GitHub
-- [ ] **Release notes automation** via GitHub releases
-- [ ] **Docker images** for reproducible environments
-- [ ] **Binder integration** for interactive docs
-- [ ] **Renovate bot** for dependency updates
-- [ ] **Social preview cards** for docs pages
-
-## ✅ Acceptance Criteria
-
-- [x] Package installable as `owi-metadatabase`
-- [x] Imports work: `from owi.metadatabase.geometry.io import GeometryAPI`
-- [x] Future extensibility: Copier template functional
-- [x] Tests: ≥90% coverage, pytest + **extensive** doctest
-- [x] Docs: MkDocs Material theme, auto-generated API
-- [x] CI/CD: Invoke-based workflows, automated releases
-- [x] Type-safe: Full type hints, ty compliance
-- [x] Modern tooling: UV + invoke for all workflows
-- [x] Test structure mirrors source structure exactly
-
-## 📞 Next Steps
-
-1. **Review & Approve** - Confirm this updated plan meets requirements
-2. **Create GitHub Project** - Track progress with issues/milestones
-3. **Begin Implementation** - Start with Phase 1 restructuring
-
-Ready to proceed with implementation?## ⚠️ Risk Assessment
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
