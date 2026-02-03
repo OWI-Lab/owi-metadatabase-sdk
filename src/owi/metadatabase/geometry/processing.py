@@ -143,7 +143,7 @@ class OWT:
         ...         subassemblies=pd.DataFrame(),
         ...         location=location,
         ...     )
-        >>> owt.water_depth
+        >>> float(owt.water_depth)
         30.0
         """
         self._init_proc = False
@@ -679,7 +679,7 @@ class OWT:
         ...     }
         ... )
         >>> out = OWT.can_adjust_properties(row)
-        >>> out["Height [m]"]
+        >>> float(out["Height [m]"])
         10.0
         """
         density = row["Mass [t]"] / row["Volume [m3]"]
@@ -742,7 +742,7 @@ class OWT:
         >>> from types import SimpleNamespace
         >>> helper = SimpleNamespace(can_adjust_properties=OWT.can_adjust_properties)
         >>> out = OWT.can_modification(helper, df.copy(), np.float64(5.0))
-        >>> out["Elevation to [mLAT]"].iloc[0]
+        >>> float(out["Elevation to [mLAT]"].iloc[0])
         5.0
         """
         if position == "bottom":
@@ -879,7 +879,7 @@ class OWT:
         ...     _init_spec_full=False,
         ... )
         >>> OWT.assembly_full_structure(helper)
-        >>> helper.full_structure["Height [m]"].sum()
+        >>> float(helper.full_structure["Height [m]"].sum())
         3.0
         >>> helper._init_spec_full
         True

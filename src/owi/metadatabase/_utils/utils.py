@@ -267,9 +267,9 @@ def fix_nan(obj: Any) -> Any:
     Examples
     --------
     >>> fixed = fix_nan({"a": "NaN", "b": ["nan", "ok"]})
-    >>> np.isnan(fixed["a"])
+    >>> bool(np.isnan(fixed["a"]))
     True
-    >>> np.isnan(fixed["b"][0])
+    >>> bool(np.isnan(fixed["b"][0]))
     True
     """
     if isinstance(obj, dict):

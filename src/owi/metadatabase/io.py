@@ -244,7 +244,7 @@ class API:
         --------
         >>> from types import SimpleNamespace
         >>> resp = SimpleNamespace(text='[{"a": 1}]')
-        >>> API.output_to_df(resp)["a"].iloc[0]
+        >>> int(API.output_to_df(resp)["a"].iloc[0])
         1
         """
         try:
@@ -282,7 +282,7 @@ class API:
         Examples
         --------
         >>> df = pd.DataFrame({"id": [1]})
-        >>> API.postprocess_data(df, "single")["id"]
+        >>> int(API.postprocess_data(df, "single")["id"])
         1
         """
         if output_type == "single":

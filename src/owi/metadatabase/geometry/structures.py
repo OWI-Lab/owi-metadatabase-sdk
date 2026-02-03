@@ -207,7 +207,7 @@ class Position(BaseStructure):
         Examples
         --------
         >>> pos = Position(np.float64(1), np.float64(2), np.float64(3))
-        >>> (pos.x, pos.y, pos.z)
+        >>> tuple(map(float, (pos.x, pos.y, pos.z)))
         (1.0, 2.0, 3.0)
         """
         self.x = x
@@ -483,7 +483,7 @@ class BuildingBlock(BaseStructure):
         ...     "moment_of_inertia_z": np.float64(3.0),
         ...     "mass": np.float64(100.0),
         ... }
-        >>> BuildingBlock(data).mass
+        >>> float(BuildingBlock(data).mass)
         100.0
         """
         if self.type == "lumped_mass":
@@ -555,7 +555,7 @@ class BuildingBlock(BaseStructure):
         ...     "moment_of_inertia_z": np.float64(3.0),
         ...     "mass": np.float64(100.0),
         ... }
-        >>> BuildingBlock(data).moment_of_inertia["y"]
+        >>> float(BuildingBlock(data).moment_of_inertia["y"])
         2.0
         """
         if self.type == "lumped_mass":
