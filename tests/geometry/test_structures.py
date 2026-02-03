@@ -2,14 +2,14 @@ import pandas as pd
 import pandas.testing as pd_testing
 import pytest
 
-from owimetadatabase_preprocessor.geometry.structures import (
+from owi.metadatabase._utils.utils import deepcompare
+from owi.metadatabase.geometry.structures import (
     BaseStructure,
     BuildingBlock,
     Material,
     Position,
     SubAssembly,
 )
-from owimetadatabase_preprocessor.utility.utils import deepcompare
 
 
 class TestBaseStructure:
@@ -102,7 +102,14 @@ class TestSubAssembly:
         sa = SubAssembly(materials_df, sa_in, api_test)
         assert sa == sa_out
 
-    def test_subassemblies_bb(self, data, bb_out_list, api_test, materials_df, mock_requests_sa_get_bb_bb):
+    def test_subassemblies_bb(
+        self,
+        data,
+        bb_out_list,
+        api_test,
+        materials_df,
+        mock_requests_sa_get_bb_bb,
+    ):
         for i in range(len(data["sa_prop"])):
             sa = SubAssembly(materials_df, data["sa"][i], api_test)
             bbs = sa.building_blocks

@@ -8,7 +8,7 @@
         }
     ],
     "can_mod_bot": [
-        {    
+        {
             "title": ["aaa01_tp_01", "aaa01_tp_10"],
             "Elevation from [mLAT]": [16.0, 15.8],
             "Elevation to [mLAT]": [15.8, 7.5],

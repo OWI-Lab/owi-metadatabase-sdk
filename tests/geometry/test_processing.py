@@ -1,8 +1,10 @@
+import warnings
+
 import pandas as pd
 import pandas.testing as pd_testing
 import pytest
 
-from owimetadatabase_preprocessor.geometry.processing import OWT
+from owi.metadatabase.geometry.processing import OWT
 
 
 class TestOWT:
@@ -152,6 +154,35 @@ class TestOWT:
         owt.assembly_full_structure()
         assert owt._init_spec_full
         pd_testing.assert_frame_equal(owt.full_structure, assembled_full)
+
+    def test_extend_dfs_sets_subassembly(self, owt, mock_requests_sa_get_bb):
+        owt.process_structure("full")
+        owt.extend_dfs()
+        assert set(owt.tower["Subassembly"].unique()) == {"TW"}
+        assert set(owt.transition_piece["Subassembly"].unique()) == {"TP"}
+        assert set(owt.monopile["Subassembly"].unique()) == {"MP"}
+        assert owt._init_spec_part
+        assert owt._init_spec_full
+
+    def test_transform_monopile_geometry(self, owt, mock_requests_sa_get_bb):
+        cutoff_point = -1_000_000.0
+        pile = owt.transform_monopile_geometry(cutoff_point=cutoff_point)
+        assert "Elevation from [m]" in pile.columns
+        assert pile.iloc[0]["Elevation from [m]"] == cutoff_point
+
+    def test_transform_monopile_geometry_missing(self, owt):
+        owt.mp_sub_assemblies = None
+        with pytest.raises(ValueError):
+            owt.transform_monopile_geometry()
+
+    def test_getattribute_warns_on_unprocessed_access(self, owt):
+        with warnings.catch_warnings(record=True) as recorded:
+            warnings.simplefilter("always")
+            _ = owt.tower
+            _ = owt.full_structure
+        messages = [str(item.message) for item in recorded]
+        assert any("process_structure()" in msg for msg in messages)
+        assert any("assembly_tp_mp()" in msg for msg in messages)
 
 
 class TestOWTs:

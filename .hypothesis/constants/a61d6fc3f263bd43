@@ -1,0 +1,4 @@
+# file: /home/pietro.dantuono@24SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/src/owimetadatabase_preprocessor/io.py
+# hypothesis_version: 6.141.1
+
+[1000.0, -100000, -20000, -10000, -1000, 200, 1000, 100000, '.', 'Authorization', 'MP', 'TP', 'TW', 'Token', 'Token ', 'existance', 'header', 'id', 'list', 'max', 'min', 'response', 'single', 'subassemblies', 'subassembly_type', 'token', 'token ', 'z_position']

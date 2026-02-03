@@ -4,9 +4,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from owimetadatabase_preprocessor.geometry.processing import OWT, OWTs
-from owimetadatabase_preprocessor.geometry.structures import Position
-from owimetadatabase_preprocessor.utility.utils import dict_generator
+from owi.metadatabase._utils.utils import dict_generator
+from owi.metadatabase.geometry.processing import OWT, OWTs
+from owi.metadatabase.geometry.structures import Position
 
 
 @pytest.fixture(scope="function")
@@ -258,7 +258,14 @@ def df_proc_struct_true(request, data):
         tp_distr = pd.DataFrame(data["geo"]["process_distr"][0]).set_index("title")
         grout = pd.DataFrame(data["geo"]["process_distr"][1]).set_index("title")
         mp_lump = pd.DataFrame(
-            columns=["title", "X [m]", "Y [m]", "Z [mLAT]", "Mass [t]", "Description"],
+            columns=[
+                "title",
+                "X [m]",
+                "Y [m]",
+                "Z [mLAT]",
+                "Mass [t]",
+                "Description",
+            ],
             dtype=np.float64,
         )
         mp_lump["title"] = mp_lump["title"].astype(str)
@@ -292,7 +299,14 @@ def df_proc_struct_true(request, data):
     elif idx == 3:
         mp = pd.DataFrame(data["geo"]["process_tube"][1]).set_index("title")
         mp_lump = pd.DataFrame(
-            columns=["title", "X [m]", "Y [m]", "Z [mLAT]", "Mass [t]", "Description"],
+            columns=[
+                "title",
+                "X [m]",
+                "Y [m]",
+                "Z [mLAT]",
+                "Mass [t]",
+                "Description",
+            ],
             dtype=np.float64,
         )
         mp_lump["title"] = mp_lump["title"].astype(str)
@@ -380,7 +394,10 @@ def owts_init(owt, api_test, materials_df):
     }
     dict_init["tower_base"] = {"AAA01": owt.tower_base, "AAB02": owt.tower_base}
     dict_init["pile_head"] = {"AAA01": owt.pile_head, "AAB02": owt.pile_head}
-    dict_init["water_depth"] = {"AAA01": owt.water_depth, "AAB02": owt.water_depth}
+    dict_init["water_depth"] = {
+        "AAA01": owt.water_depth,
+        "AAB02": owt.water_depth,
+    }
     dict_init["tw_sub_assemblies"] = pd.concat([owt.tw_sub_assemblies, owt.tw_sub_assemblies])
     dict_init["tp_sub_assemblies"] = pd.concat([owt.tp_sub_assemblies, owt.tp_sub_assemblies])
     dict_init["mp_sub_assemblies"] = pd.concat([owt.mp_sub_assemblies, owt.mp_sub_assemblies])
@@ -478,21 +495,56 @@ def owts_true(data, assembled_tp_mp, assembled_full, owts_init):
     dict_["tp_skirt"]["Subassembly"] = "TP"
     for sa in ["TW", "TP", "MP"]:
         dict_["substructure"].loc[dict_["substructure"].index.str.contains(sa.lower()), "Subassembly"] = sa
-        dict_["full_structure"].loc[dict_["full_structure"].index.str.contains(sa.lower()), "Subassembly"] = sa
+        dict_["full_structure"].loc[
+            dict_["full_structure"].index.str.contains(sa.lower()),
+            "Subassembly",
+        ] = sa
     dict_["all_tubular_structures"] = pd.concat([tower, tp, mp, tower, tp, mp])
-    dict_["all_distributed_mass"] = pd.concat([tp_distr_mass, grout, mp_distr_mass, tp_distr_mass, grout, mp_distr_mass])
+    dict_["all_distributed_mass"] = pd.concat(
+        [
+            tp_distr_mass,
+            grout,
+            mp_distr_mass,
+            tp_distr_mass,
+            grout,
+            mp_distr_mass,
+        ]
+    )
     dict_["all_lumped_mass"] = pd.concat(
         [
-            rna[["X [m]", "Y [m]", "Z [mLAT]", "Mass [t]", "Description", "Subassembly"]],
+            rna[
+                [
+                    "X [m]",
+                    "Y [m]",
+                    "Z [mLAT]",
+                    "Mass [t]",
+                    "Description",
+                    "Subassembly",
+                ]
+            ],
             tw_lump_mass,
             tp_lump_mass,
             mp_lump_mass,
-            rna[["X [m]", "Y [m]", "Z [mLAT]", "Mass [t]", "Description", "Subassembly"]],
+            rna[
+                [
+                    "X [m]",
+                    "Y [m]",
+                    "Z [mLAT]",
+                    "Mass [t]",
+                    "Description",
+                    "Subassembly",
+                ]
+            ],
             tw_lump_mass,
             tp_lump_mass,
             mp_lump_mass,
         ]
     )
-    dict_["all_turbines"] = pd.concat([pd.DataFrame(data["turb"], index=[0]), pd.DataFrame(data["turb"], index=[1])])
+    dict_["all_turbines"] = pd.concat(
+        [
+            pd.DataFrame(data["turb"], index=[0]),
+            pd.DataFrame(data["turb"], index=[1]),
+        ]
+    )
     dict_["all_turbines"].loc[1, "Turbine name"] = "AAB02"
     return dict_

@@ -1,0 +1,4 @@
+# file: /home/pietro.dantuono@24SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/src/owimetadatabase_preprocessor/utility/utils.py
+# hypothesis_version: 6.141.1
+
+[1e-09, 1e-05, 1.0, 255.0, '#', '__dict__', 'exclude', 'include', 'nan', 'number', 'object', 'outline']

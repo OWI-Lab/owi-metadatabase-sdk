@@ -7,9 +7,9 @@ import pandas as pd
 import pytest
 import requests
 
-from owimetadatabase_preprocessor.geometry.io import GeometryAPI
-from owimetadatabase_preprocessor.geometry.structures import Material, Position
-from owimetadatabase_preprocessor.utility.utils import dict_generator
+from owi.metadatabase._utils.utils import dict_generator
+from owi.metadatabase.geometry.io import GeometryAPI
+from owi.metadatabase.geometry.structures import Material, Position
 
 
 @pytest.fixture(scope="function")

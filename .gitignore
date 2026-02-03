@@ -22,9 +22,10 @@ __pycache__
 # To do
 .todo
 
-# Sphinx documentation
+# Documentation
 docs/_build/
 docs/generated/
+site/  # MkDocs build output
 
 # Linter/formatter
 .ruff_cache/

@@ -1,0 +1,4 @@
+# file: /home/pietro.dantuono@24SEA.local/Projects/SMARTLIFE/owi-metadatabase-sdk/src/owimetadatabase_preprocessor/geometry/io.py
+# hypothesis_version: 6.141.1
+
+[0.001, 0.01, 0.5, 'Depth from [m]', 'Depth to [m]', 'Diameter [m]', 'MP', 'Pile material', 'Poissons ratio [-]', 'Wall thickness [mm]', 'Youngs modulus [GPa]', 'asset__title', 'assetlocation', 'buildingblocks', 'data', 'density', 'elevation', 'existance', 'exists', 'id', 'list', 'material_name', 'materials', 'model_definition', 'modeldefinitions', 'multiple_modeldef', 'poissons_ratio', 'projectsite', 'projectsite_name', 'routes', 'scaleanchor', 'scene', 'site', 'sub_assembly__id', 'subassemblies', 'subassembly_type', 'title', 'top_outer_diameter', 'userroutes', 'wall_thickness', 'x', 'yaxis', 'youngs_modulus', 'z_position']

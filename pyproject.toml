@@ -1,11 +1,12 @@
 [project]
-name = "owimetadatabase-preprocessor"
-version = "0.10.6"
-description = "Package for preprocessing data from owimetadatabase."
-authors = [{ name = "arsmlnkv", email = "melnikov.arsene@gmail.com" }]
+name = "owi-metadatabase"
+version = "0.11.0"
+description = "Core SDK for OWI-Lab metadatabase: geometry and location data"
+authors = [{ name = "arsmlnkv", email = "arsen.melnikov@vub.be" },
+           { name = "Pietro D'Antuono", email = "pietro.dantuono@vub.be" }]
 readme = "README.md"
 license = {file = "LICENSE"}
-keywords = ["owimetadatabase"]
+keywords = ["owimetadatabase", "offshore wind", "geometry", "locations"]
 requires-python = ">=3.9,<3.14"
 classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
@@ -18,28 +19,17 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "filelock ==3.19.1 ; python_version < '3.10'",
-    "filelock >=3.20.3 ; python_version >= '3.10'",
-    "fonttools ==4.60.2 ; python_version < '3.10'",
-    "fonttools >=4.61.0 ; python_version >= '3.10'",
-    "plotly >=5.19.0",
     "requests >=2.32.0",
-    "matplotlib ==3.9.4 ; python_version < '3.10'",
-    "matplotlib >=3.10.0 ; python_version >= '3.10'",
     "numpy >=1.26.0,<2.0.0 ; python_version < '3.11'",
     "numpy >=2.0.0 ; python_version >= '3.11'",
     "pandas >=2.0.0",
-    "groundhog >=0.11.0",
     "pyproj >=3.6.0,<3.7.0 ; python_version < '3.10'",
     "pyproj >=3.7.0,<3.7.2 ; python_version >= '3.10' and python_version < '3.11'",
     "pyproj >=3.7.2 ; python_version >= '3.11'",
-    "scipy <1.14.0 ; python_version < '3.10'",
-    "scipy >=1.14.0,<1.16.0 ; python_version >= '3.10' and python_version < '3.11'",
-    "scipy >=1.16.0 ; python_version >= '3.11'",
     "tqdm >=4.66.0",
-    "jinja2 >=3.1.6",
-    "urllib3 >=2.6.3",
-    "virtualenv >=20.36.1"
+    "plotly >=5.19.0",
+    "matplotlib ==3.9.4 ; python_version < '3.10'",
+    "matplotlib >=3.10.0 ; python_version >= '3.10'",
 ]
 
 
@@ -50,8 +40,6 @@ dev = [
     {include-group = "typing"},
     {include-group = "docs"},
     {include-group = "dev-tools"},
-    {include-group = "versioning"},
-    {include-group = "compatibility"}
 ]
 test = [
     "pytest >=8.4.0",
@@ -59,65 +47,75 @@ test = [
     "pytest-xdist >=3.7.0",
     "pytest-clarity >=1.0.0",
     "pytest-cov >=7.0.0",
-    "requests-mock >=1.12.1"
+    "requests-mock >=1.12.1",
+    "hypothesis >=6.100.0"
 ]
 lint = [
     "ruff >=0.12.9"
 ]
 typing = [
-    "mypy >=1.10.0",
+    "ty >=0.0.14",
     "pandas-stubs >=2.0.0,<2.2.3.241009 ; python_version < '3.10'",
     "pandas-stubs >=2.2.3.241009 ; python_version >= '3.10'",
     "types-requests >=2.32.0",
-    "pytest-stub >=1.0.0",
-    "types-colorama >=0.4.0",
-    "types-Pygments >=2.0.0",
-    "types-setuptools >=68.0.0",
-    "types-python-dateutil >=2.8.0",
-    "types-pytz >=2023.3.0"
 ]
 docs = [
-    "sphinx >=7.2.5,<8.0.0 ; python_version < '3.10'",
-    "sphinx >=8.0.0,<8.2.0 ; python_version >= '3.10' and python_version < '3.11'",
-    "sphinx >=8.2.0,<9.0.0 ; python_version >= '3.11'",
-    "sphinx_rtd_theme >=3.0.0,<4.0.0",
-    "furo >=2025.7.19"
+    "mkdocs >=1.6.0",
+    "mkdocs-material >=9.5.0",
+    "mkdocstrings[python] >=0.27.0",
+    "mkdocs-jupyter >=0.25.0",
+    "mkdocs-git-revision-date-localized-plugin >=1.3.0",
+    "mkdocs-minify-plugin >=0.8.0",
+    "mike >=2.0.0",
 ]
 dev-tools = [
-    "nox >=2023.4.22",
-    "pre-commit >=3.0.0"
+    "invoke >=2.2.0",
+    "pre-commit >=3.0.0",
+    "deptry >=0.23.1"
 ]
-versioning = [
-    "bump2version >=1.0.0"
+# Future extension dependency groups
+fatigue = [
+    # Will depend on owi-metadatabase-fatigue when available
 ]
-compatibility = [
-    "deptry >=0.23.0",
-    "vermin >=1.6.0"
+soil = [
+    # Will depend on owi-metadatabase-soil when available
 ]
 
 
 [project.urls]
-homepage = "https://owi-lab.github.io/owimetadatabase-preprocessor/"
-repository = "https://github.com/OWI-Lab/owimetadatabase-preprocessor"
-documentation = "https://owi-lab.github.io/owimetadatabase-preprocessor/"
+homepage = "https://owi-lab.github.io/owi-metadatabase-sdk/"
+repository = "https://github.com/OWI-Lab/owi-metadatabase-sdk"
+documentation = "https://owi-lab.github.io/owi-metadatabase-sdk/"
 
 
 [tool.pytest.ini_options]
 filterwarnings = [
     "ignore::UserWarning"
 ]
-testpaths = ["tests"]
+testpaths = ["tests", "src"]
 python_files = ["test_*.py"]
 addopts = [
     "-v",
     "--import-mode=importlib",
     "--strict-markers",
     "--tb=short",
+    "--cov=src/owi/metadatabase",
+    "--cov-report=html",
+    "--cov-report=term-missing:skip-covered",
+    "--doctest-modules",
+    "--doctest-continue-on-failure",
+    "--doctest-glob=*.md",
+]
+doctest_optionflags = [
+    "NORMALIZE_WHITESPACE",
+    "ELLIPSIS",
+    "NUMBER",
+    "IGNORE_EXCEPTION_DETAIL",
 ]
 
 
 [tool.ruff]
-line-length = 127
+line-length = 120
 target-version = "py39"
 
 
@@ -146,11 +144,11 @@ ignore = [
 
 
 [tool.ruff.lint.pydocstyle]
-convention = "pep257"
+convention = "numpy"
 
 
 [tool.ruff.lint.isort]
-known-first-party = ["owimetadatabase_preprocessor"]
+known-first-party = ["owi.metadatabase"]
 
 
 [tool.mypy]
@@ -170,7 +168,7 @@ files = ["src/", "tests/"]
 
 
 [[tool.mypy.overrides]]
-module = "owimetadatabase_preprocessor.*"
+module = "owi.metadatabase.*"
 disallow_untyped_defs = true
 disallow_incomplete_defs = true
 check_untyped_defs = true
@@ -182,9 +180,13 @@ ignore_missing_imports = true
 
 
 [tool.deptry.per_rule_ignores]
-DEP002 = ["scipy", "jinja2", "filelock", "fonttools", "virtualenv", "urllib3"]
+DEP002 = ["plotly", "matplotlib", "pyproj", "tqdm"]
+DEP003 = ["owi"]
 
 
 [build-system]
-requires = ["uv_build>=0.9.6,<0.10.0"]
-build-backend = "uv_build"
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/owi"]

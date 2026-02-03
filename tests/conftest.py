@@ -4,6 +4,34 @@ from unittest import mock
 import pytest
 import requests
 
+# Import doctest fixtures for use in docstring examples
+from tests import doctest_fixtures
+
+
+@pytest.fixture(autouse=True)
+def add_doctest_fixtures(doctest_namespace):
+    """
+    Add doctest fixtures to the doctest namespace.
+
+    This fixture automatically injects commonly used test data and utilities
+    into the namespace of all doctests, making them available without explicit
+    imports in docstring examples.
+    """
+    # Add all fixture functions
+    doctest_namespace["get_sample_geometry_data"] = doctest_fixtures.get_sample_geometry_data
+    doctest_namespace["get_sample_location_data"] = doctest_fixtures.get_sample_location_data
+    doctest_namespace["get_sample_building_block"] = doctest_fixtures.get_sample_building_block
+    doctest_namespace["get_sample_subassembly"] = doctest_fixtures.get_sample_subassembly
+    doctest_namespace["get_sample_material"] = doctest_fixtures.get_sample_material
+    doctest_namespace["get_sample_api_response"] = doctest_fixtures.get_sample_api_response
+    doctest_namespace["MockAPIResponse"] = doctest_fixtures.MockAPIResponse
+
+    # Add common sample data constants
+    doctest_namespace["SAMPLE_TURBINES"] = doctest_fixtures.SAMPLE_TURBINES
+    doctest_namespace["SAMPLE_PROJECT"] = doctest_fixtures.SAMPLE_PROJECT
+    doctest_namespace["SAMPLE_COORDINATES"] = doctest_fixtures.SAMPLE_COORDINATES
+    doctest_namespace["SAMPLE_WATER_DEPTHS"] = doctest_fixtures.SAMPLE_WATER_DEPTHS
+
 
 @pytest.fixture
 def mock_requests_get(mocker: mock.Mock) -> mock.Mock:
@@ -48,7 +76,9 @@ def dict_gen_dict_in() -> dict[str, str]:
 
 
 @pytest.fixture(scope="function", params=[1, 2, 3, 4, 5, 6, 7, 8])
-def dict_gen_dict_out(request) -> dict[str, Union[dict, dict[str, Union[str, list[str]]]]]:
+def dict_gen_dict_out(
+    request,
+) -> dict[str, Union[dict, dict[str, Union[str, list[str]]]]]:
     param = request.param
     if param == 1:
         method_keys = {"method_": "exclude", "keys_": ["key_1"]}

@@ -5,9 +5,13 @@ from unittest import mock
 import pandas as pd
 import pytest
 import requests
+from requests.auth import HTTPBasicAuth
 
-from owimetadatabase_preprocessor.io import API, PostprocessData
-from owimetadatabase_preprocessor.utility.exceptions import APIConnectionError, InvalidParameterError
+from owi.metadatabase._utils.exceptions import (
+    APIConnectionError,
+    InvalidParameterError,
+)
+from owi.metadatabase.io import API, PostprocessData
 
 
 class TestAPIAuth:
@@ -42,7 +46,7 @@ class TestAPIAuth:
         assert api_test.header is None
         assert api_test.uname == name
         assert api_test.password == pswd
-        assert api_test.auth == requests.auth.HTTPBasicAuth(name, pswd)
+        assert api_test.auth == HTTPBasicAuth(name, pswd)
 
     def test_API_token(self, api_root: str) -> None:
         """Test parent API class with header that it initializes everything correctly."""
@@ -59,7 +63,11 @@ class TestAPIAuth:
 def test_send_request_with_token(mock_requests_get: mock.Mock, api_root: str) -> None:
     header = {"Authorization": "Token 12345"}
     url_data_type = "/test/"
-    url_params: Mapping[str, Union[str, float, int]] = {"test1": "test", "test2": 1, "test3": 1.0}
+    url_params: Mapping[str, Union[str, float, int]] = {
+        "test1": "test",
+        "test2": 1,
+        "test3": 1.0,
+    }
     api_test = API(api_root, header=header)
     response = api_test.send_request(url_data_type, url_params)
     assert isinstance(response, requests.models.Response)
@@ -100,7 +108,12 @@ def test_output_to_df() -> None:
 @pytest.mark.parametrize(
     "df, output_type, expected_result, expected_exception",
     [
-        (pd.DataFrame([]), "single", {"existance": False, "id": None, "response": None}, None),
+        (
+            pd.DataFrame([]),
+            "single",
+            {"existance": False, "id": None, "response": None},
+            None,
+        ),
         (
             pd.DataFrame([{"id": 239, "col_test": "text test"}]),
             "single",
@@ -108,12 +121,22 @@ def test_output_to_df() -> None:
             None,
         ),
         (
-            pd.DataFrame([{"id": 1, "col_test": "text 1"}, {"id": 2, "col_test": "text 2"}]),
+            pd.DataFrame(
+                [
+                    {"id": 1, "col_test": "text 1"},
+                    {"id": 2, "col_test": "text 2"},
+                ]
+            ),
             "single",
             None,
             InvalidParameterError,
         ),
-        (pd.DataFrame([]), "list", {"existance": False, "id": None, "response": None}, None),
+        (
+            pd.DataFrame([]),
+            "list",
+            {"existance": False, "id": None, "response": None},
+            None,
+        ),
         (
             pd.DataFrame([{"id": 239, "col_test": "text test"}]),
             "list",
@@ -121,7 +144,12 @@ def test_output_to_df() -> None:
             None,
         ),
         (
-            pd.DataFrame([{"id": 1, "col_test": "text 1"}, {"id": 2, "col_test": "text 2"}]),
+            pd.DataFrame(
+                [
+                    {"id": 1, "col_test": "text 1"},
+                    {"id": 2, "col_test": "text 2"},
+                ]
+            ),
             "list",
             {"existance": True, "id": None, "response": None},
             None,
@@ -151,7 +179,11 @@ def test_postprocess_data(
 def test_process_data(api_root: str, header: dict[str, str], mock_requests_get_advanced: mock.Mock) -> None:
     header = header
     url_data_type = "/test/"
-    url_params: Mapping[str, Union[str, float, int]] = {"test1": "test", "test2": 1, "test3": 1.0}
+    url_params: Mapping[str, Union[str, float, int]] = {
+        "test1": "test",
+        "test2": 1,
+        "test3": 1.0,
+    }
     output_type = "list"
     api_test = API(api_root, header=header)
     df, df_add = api_test.process_data(url_data_type, url_params, output_type)

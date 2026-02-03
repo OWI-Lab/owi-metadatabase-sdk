@@ -85,7 +85,7 @@
         }
     ],
     "process_rna":
-    {   
+    {
         "title": ["AAA01_RNA_NACELLE"],
         "X [m]": [-1.5],
         "Y [m]": [0.0],

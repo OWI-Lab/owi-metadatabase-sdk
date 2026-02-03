@@ -5,7 +5,7 @@ from unittest import mock
 import pytest
 import requests
 
-from owimetadatabase_preprocessor.utility.utils import dict_generator
+from owi.metadatabase._utils.utils import dict_generator
 
 
 @pytest.fixture
@@ -154,13 +154,48 @@ def data_buildingblocks(request) -> list[dict[str, object]]:
     if request.param is not None:
         params = request.param
     data_original = [
-        {"id": 1, "project": "Nobelwind", "subassembly_id": 235, "title": "BBK01_TW_1"},
-        {"id": 2, "project": "Nobelwind", "subassembly_id": 235, "title": "BBK01_TW_2"},
-        {"id": 3, "project": "Nobelwind", "subassembly_id": 235, "title": "BBK01_TW_3"},
-        {"id": 4, "project": "Nobelwind", "subassembly_id": 236, "title": "BBK01_TP_1"},
-        {"id": 5, "project": "Nobelwind", "subassembly_id": 237, "title": "BBK01_MP_1"},
-        {"id": 6, "project": "Nobelwind", "subassembly_id": 238, "title": "BBK02_TW_1"},
-        {"id": 7, "project": "Another", "subassembly_id": 355, "title": "GGP05_TW_1"},
+        {
+            "id": 1,
+            "project": "Nobelwind",
+            "subassembly_id": 235,
+            "title": "BBK01_TW_1",
+        },
+        {
+            "id": 2,
+            "project": "Nobelwind",
+            "subassembly_id": 235,
+            "title": "BBK01_TW_2",
+        },
+        {
+            "id": 3,
+            "project": "Nobelwind",
+            "subassembly_id": 235,
+            "title": "BBK01_TW_3",
+        },
+        {
+            "id": 4,
+            "project": "Nobelwind",
+            "subassembly_id": 236,
+            "title": "BBK01_TP_1",
+        },
+        {
+            "id": 5,
+            "project": "Nobelwind",
+            "subassembly_id": 237,
+            "title": "BBK01_MP_1",
+        },
+        {
+            "id": 6,
+            "project": "Nobelwind",
+            "subassembly_id": 238,
+            "title": "BBK02_TW_1",
+        },
+        {
+            "id": 7,
+            "project": "Another",
+            "subassembly_id": 355,
+            "title": "GGP05_TW_1",
+        },
     ]
     if params == "empty":
         data = data_original
@@ -406,7 +441,7 @@ def mock_requests_for_proc(mocker: mock.Mock, materials_dicts_init, sa_list: lis
         elif url == "https://test.api/test/geometry/userroutes/materials":
             data_ = materials_dicts_init
         elif url == "https://test.api/test/locations/assetlocations":
-            data_ = {"id": [1], "elevation": [30.0], "projectsite_name": "test"}  # type: ignore
+            data_ = {"id": [1], "elevation": [30.0], "projectsite_name": "test"}
         elif url == "https://test.api/test/geometry/userroutes/buildingblocks":
             if int(kwargs["params"]["sub_assembly__id"]) == 1:
                 data_ = [
