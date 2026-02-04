@@ -65,7 +65,6 @@ from owi.metadatabase.locations import LocationsAPI
 - numpy
 - pandas
 - requests
-- pyproj
 - plotly
 - matplotlib
 - tqdm
@@ -81,7 +80,7 @@ If you use this package in your research, please cite:
 ```bibtex
 @software{owi_metadatabase_sdk,
   author = {OWI-Lab},
-  title = {OWI-Metadatabase SDK},
+  title = {OWI-metadatabase SDK},
   year = {2026},
   url = {https://github.com/OWI-Lab/owi-metadatabase-sdk},
   doi = {10.5281/zenodo.10620568}
@@ -90,7 +89,7 @@ If you use this package in your research, please cite:
 
 ## Acknowledgements
 
-This package was developed as part of the ETF Smartlife (FOD165) and WILLOW (EUAR157) projects.
+This package was developed as part of the [ETF Smartlife (FOD165)](https://owi-lab.be/projects/smartlife) and [WILLOW (EUAR157)](https://willow-project.eu/) projects.
 
 ## Support
 
