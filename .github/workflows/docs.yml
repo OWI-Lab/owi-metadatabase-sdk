@@ -74,7 +74,7 @@ jobs:
           else
             version="dev"
             alias="dev"
-            set_default="false"
+            set_default="true"
           fi
           echo "version=${version}" >> "$GITHUB_OUTPUT"
           echo "alias=${alias}" >> "$GITHUB_OUTPUT"
