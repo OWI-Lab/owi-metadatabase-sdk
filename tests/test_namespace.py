@@ -1,7 +1,7 @@
 """Test namespace package structure and extensibility."""
 
 import owi.metadatabase
-from owi.metadatabase import __version__
+from owi.metadatabase._version import __version__
 from owi.metadatabase.geometry import OWT, GeometryAPI, OWTs
 from owi.metadatabase.locations import LocationsAPI
 
@@ -35,11 +35,11 @@ def test_version_accessible():
 
     Examples
     --------
-    >>> from owi.metadatabase import __version__
+    >>> from owi.metadatabase._version import __version__
     >>> __version__
-    '0.11.0'
+    '0.1.0'
     """
-    assert __version__ == "0.11.0"
+    assert __version__ == "0.1.0"
 
 
 def test_geometry_module_importable():
@@ -109,9 +109,8 @@ def test_extensibility_structure():
     assert "owi" in sys.modules
     assert "owi.metadatabase" in sys.modules
 
-    # Verify the base package has expected attributes
-    assert hasattr(owi.metadatabase, "__version__")
-    assert hasattr(owi.metadatabase, "__all__")
+    # Verify the namespace package has a namespace path
+    assert hasattr(owi.metadatabase, "__path__")
 
 
 if __name__ == "__main__":

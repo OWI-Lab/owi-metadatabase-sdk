@@ -37,3 +37,6 @@ site/  # MkDocs build output
 .DS_Store
 
 .vscode/
+
+# UV
+uv.lock

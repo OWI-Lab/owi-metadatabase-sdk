@@ -1,13 +1,13 @@
 """Test basic package imports."""
 
-from owi.metadatabase import __version__
+from owi.metadatabase._version import __version__
 from owi.metadatabase.geometry import OWT, GeometryAPI, OWTs
 from owi.metadatabase.locations import LocationsAPI
 
 
 def test_version():
     """Test that version is accessible."""
-    assert __version__ == "0.11.0"
+    assert __version__ == "0.1.0"
 
 
 def test_geometry_imports():

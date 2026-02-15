@@ -40,7 +40,7 @@ Check that the package is installed correctly:
 ```python
 import owi.metadatabase
 print(owi.metadatabase.__version__)
-# Output: 0.11.0
+# Output: 0.1.0
 ```
 
 Test basic imports:

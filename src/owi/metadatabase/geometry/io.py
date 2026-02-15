@@ -624,10 +624,10 @@ class GeometryAPI(API):
         ...     "_check_if_need_modeldef",
         ...     return_value=None,
         ... ), mock.patch(
-        ...     "metadatabase.geometry.io.OWT",
+        ...     "geometry.io.OWT",
         ...     _make_owt,
         ... ), mock.patch(
-        ...     "metadatabase.geometry.io.OWTs",
+        ...     "geometry.io.OWTs",
         ...     _make_owts,
         ... ):
         ...     out = api.get_owt_geometry_processor("T01")
@@ -821,16 +821,16 @@ class GeometryAPI(API):
         for index in range(1, len(bbs_df)):
             prev_row = bbs_df.iloc[index - 1]
             row = bbs_df.iloc[index]
-            pile.loc[index, "Depth to [m]"] = penetration - 1e-3 * float(prev_row["z_position"])
-            pile.loc[index, "Depth from [m]"] = penetration - 1e-3 * float(row["z_position"])
-            pile.loc[index, "Pile material"] = str(row["material_name"])
-            pile.loc[index, "Pile material submerged unit weight [kN/m3]"] = 1e-2 * float(row["density"]) - 10
-            pile.loc[index, "Wall thickness [mm]"] = float(row["wall_thickness"])
+            pile.loc[index, "Depth to [m]"] = penetration - 1e-3 * float(prev_row.at["z_position"])
+            pile.loc[index, "Depth from [m]"] = penetration - 1e-3 * float(row.at["z_position"])
+            pile.loc[index, "Pile material"] = str(row.at["material_name"])
+            pile.loc[index, "Pile material submerged unit weight [kN/m3]"] = 1e-2 * float(row.at["density"]) - 10
+            pile.loc[index, "Wall thickness [mm]"] = float(row.at["wall_thickness"])
             pile.loc[index, "Diameter [m]"] = (
-                1e-3 * 0.5 * (float(row["bottom_outer_diameter"]) + float(row["top_outer_diameter"]))
+                1e-3 * 0.5 * (float(row.at["bottom_outer_diameter"]) + float(row.at["top_outer_diameter"]))
             )
-            pile.loc[index, "Youngs modulus [GPa]"] = float(row["youngs_modulus"])
-            pile.loc[index, "Poissons ratio [-]"] = float(row["poissons_ratio"])
+            pile.loc[index, "Youngs modulus [GPa]"] = float(row.at["youngs_modulus"])
+            pile.loc[index, "Poissons ratio [-]"] = float(row.at["poissons_ratio"])
 
         pile.sort_values("Depth from [m]", inplace=True)
         pile.reset_index(drop=True, inplace=True)
@@ -911,7 +911,7 @@ class GeometryAPI(API):
         ...     "_check_if_need_modeldef",
         ...     return_value=None,
         ... ), mock.patch(
-        ...     "metadatabase.geometry.io.SubAssembly",
+        ...     "geometry.io.SubAssembly",
         ...     _StubSubassembly,
         ... ):
         ...     fig = api.plot_turbines(["T01"], return_fig=True)

@@ -18,11 +18,13 @@ Transform `owi-metadatabase-sdk` into a namespace package (`owi-metadatabase`) c
 ## 📦 Target Package Structure
 
 ### Repository Name
+
 - **Current**: `owi-metadatabase-sdk`
 - **New**: `owi-metadatabase` (base package)
 
 ### Package Namespace Structure
-```
+
+```text
 src/
 └── owi/
     └── metadatabase/
@@ -46,6 +48,7 @@ src/
 ### Import Structure Confirmation
 
 ✅ **Confirmed**: Imports will be structured as:
+
 ```python
 from owi.metadatabase.locations.io import LocationsAPI
 from owi.metadatabase.geometry.io import GeometryAPI
@@ -56,7 +59,8 @@ from owi.metadatabase.geometry.structures import Material, SubAssembly
 The base namespace is `owi`, so all imports start with `from owi.metadatabase...`
 
 ### Future Extension Packages
-```
+
+```text
 owi-metadatabase-fatigue/
 └── src/owi/metadatabase/fatigue/...
 
@@ -67,25 +71,29 @@ owi-metadatabase-soil/
 ## 🔧 Phase 1: Project Restructuring
 
 ### 1.1 Namespace Package Setup
+
 - [x] Create PEP 420 namespace structure (`src/owi/metadatabase/`)
-- [x] Remove traditional __init__.py from `owi/` directory (namespace root)
-- [x] Add proper __init__.py to `owi/metadatabase/` with:
+- [x] Remove traditional `__init__.py` from `owi/` directory (namespace root)
+- [x] Add proper `__init__.py` to `owi/metadatabase/` with:
   - Version info
   - Public API exports
   - Namespace declaration
 - [x] Add `py.typed` marker for type checking support
 
 ### 1.2 Module Migration
+
 - [x] Move `geometry/` module to `src/owi/metadatabase/geometry/`
 - [x] Move `locations/` module to `src/owi/metadatabase/locations/`
 - [x] Extract shared utilities from `utility/` to `_utils/` (prefix indicates internal)
 - [x] Update all import statements package-wide:
+
   ```python
   # Old: from owimetadatabase_preprocessor.geometry import X
   # New: from owi.metadatabase.geometry import X
   ```
 
 ### 1.3 Remove Legacy Modules
+
 - [x] Archive `fatigue/` and `soil/` modules for future separate repositories
 - [x] Remove `results/` module (or relocate if needed)
 - [x] Clean up unused io.py at root level
@@ -93,10 +101,11 @@ owi-metadatabase-soil/
 ## 📝 Phase 2: Build System Migration to UV
 
 ### 2.1 Update pyproject.toml
+
 ```toml
 [project]
 name = "owi-metadatabase"
-version = "0.11.0"  # Major restructuring bump
+version = "0.1.0"  # Major restructuring bump
 description = "Core SDK for OWI-Lab metadatabase: geometry and location data"
 authors = [
     { name = "arsmlnkv", email = "arsen.melnikov@vub.be" },
@@ -201,9 +210,11 @@ known-first-party = ["owi.metadatabase"]
 ```
 
 ### 2.2 UV Configuration
+
 - [x] Create `.python-version` file: `3.9`
 - [x] Generate uv.lock to repository
 - [x] Update CI/CD to use `uv` commands:
+
   ```bash
   uv sync --dev
   uv run invoke test
@@ -211,6 +222,7 @@ known-first-party = ["owi.metadatabase"]
   ```
 
 ### 2.3 Dependency Cleanup
+
 - [x] Audit dependencies - remove:
   - `groundhog` (soil-specific)
   - `scipy` (if only used in soil/fatigue)
@@ -220,7 +232,8 @@ known-first-party = ["owi.metadatabase"]
 ## 🧪 Phase 3: Testing Infrastructure
 
 ### 3.1 Test Directory Restructuring (Mirror Source)
-```
+
+```text
 tests/
 ├── __init__.py
 ├── conftest.py              # Global fixtures
@@ -242,6 +255,7 @@ tests/
 **Key**: Test structure **exactly mirrors** source structure. `test_*.py` files correspond 1:1 with source module files.
 
 ### 3.2 Extensive Doctest Requirements
+
 - [x] **Every public function** must have doctest examples
 - [x] **At least 2-3 examples** per function showing:
   - Basic usage
@@ -250,6 +264,7 @@ tests/
 - [x] Use doctest fixtures in `conftest.py` for complex objects
 - [x] Configure pytest to discover and run all doctests
 - [ ] Example comprehensive docstring:
+
   ```python
   def transform_coordinates(
       x: float,
@@ -316,6 +331,7 @@ tests/
   ```
 
 ### 3.3 Testing Best Practices
+
 - [x] Achieve ≥90% code coverage for core modules
 - [x] Mock external API calls (requests-mock)
 - [x] Parametrize tests for multiple Python versions
@@ -324,6 +340,7 @@ tests/
 ## 📚 Phase 4: MkDocs Documentation
 
 ### 4.1 MkDocs + Material Theme Setup
+
 ```yaml
 # mkdocs.yml
 site_name: OWI-metadatabase SDK
@@ -473,7 +490,8 @@ nav:
 ```
 
 ### 4.2 Documentation Structure
-```
+
+```text
 docs/
 ├── index.md                     # Home page
 ├── getting-started/
@@ -514,10 +532,13 @@ docs/
 ```
 
 ### 4.3 NumPy Docstring Standards
+
 All docstrings follow NumPy convention with **comprehensive doctest examples**. See section 3.2 for detailed requirements.
 
 ### 4.4 Documentation Build & Deployment (Invoke)
+
 - [x] Update docs.py for MkDocs:
+
   ```python
   @task
   def build(c):
@@ -540,14 +561,17 @@ All docstrings follow NumPy convention with **comprehensive doctest examples**. 
       build(c)
       serve(c)
   ```
+
 - [x] Configure GitHub Pages deployment via invoke
 - [x] Add versioning with `mike` for multi-version docs
 
 ## 🔍 Phase 5: Code Quality & Type Safety
 
 ### 5.1 Type Hints with Ty
+
 - [x] Add comprehensive type hints to all functions
 - [x] Use modern typing features:
+
   ```python
   from typing import TYPE_CHECKING
   from collections.abc import Sequence
@@ -556,8 +580,10 @@ All docstrings follow NumPy convention with **comprehensive doctest examples**. 
       from pathlib import Path
       import pandas as pd
   ```
+
 - [x] Add `py.typed` marker
 - [x] Configure ty (replace mypy in quality.py):
+
   ```python
   @task
   def ty_check(c):
@@ -568,7 +594,9 @@ All docstrings follow NumPy convention with **comprehensive doctest examples**. 
   ```
 
 ### 5.2 Ruff Configuration (Updated)
+
 - [x] Ruff configuration verified in pyproject.toml
+
 ```toml
 [tool.ruff]
 line-length = 120
@@ -586,7 +614,9 @@ known-first-party = ["owi.metadatabase"]
 ```
 
 ### 5.3 Invoke Tasks Integration
+
 Update quality.py to replace black/flake8/pylint/mypy with ruff/ty:
+
 ```python
 @task
 def format(c):
@@ -607,11 +637,14 @@ def ty_check(c):
 def all(c):
     """Run all quality checks."""
 ```
+
 - [x] Update invoke quality tasks for ruff/ty
 - [x] Validate invoke QA with ruff/ty
 
 ### 5.4 Pre-commit Hooks
+
 - [x] Pre-commit hooks updated for ruff and ty
+
 ```yaml
 # .pre-commit-config.yaml
 repos:
@@ -635,7 +668,9 @@ repos:
 ## 🚀 Phase 6: CI/CD & Release
 
 ### 6.1 GitHub Actions Workflows (Using Invoke)
+
 - [x] Update CI workflow to use uv + invoke for test/quality/docs
+
 ```yaml
 # .github/workflows/ci.yml
 name: CI
@@ -706,18 +741,21 @@ jobs:
 ```
 
 ### 6.2 CI Workflow Hardening
+
 - [x] Add concurrency group to cancel in-progress runs on new commits
 - [x] Enable pip/uv cache for dependency install speed
 - [x] Pin action versions and enforce minimum permissions
 - [x] Upload coverage report artifact for post-run inspection
 
 ### 6.3 Documentation Deployment Workflow
+
 - [x] Add docs workflow to build and publish versioned site with `mike` to GitHub Pages
 - [x] Deploy only on tagged releases and main branch updates
 - [x] Keep docs build strict (`mkdocs build --strict`) in CI
 - [x] Store docs preview as artifact for pull requests
 
 ### 6.4 PyPI Publishing
+
 ```yaml
 # .github/workflows/release.yml
 name: Publish to PyPI
@@ -738,7 +776,8 @@ jobs:
       - uses: pypa/gh-action-pypi-publish@release/v1
 ```
 
-    ### 6.5 Version Management
+### 6.5 Version Management
+
 - [ ] Use `uv version` for version bumps
 - [ ] Dynamic version from `_version.py`
 - [ ] Automated changelog generation
@@ -746,6 +785,7 @@ jobs:
 ## 📦 Phase 7: Namespace Package Extensibility & Copier Template
 
 ### 7.1 Create Copier Template
+
 Create a Copier template repository for generating extension packages:
 
 **Template Repository**: `owi-metadatabase-extension-template`
@@ -798,7 +838,7 @@ python_version:
 base_package_version:
   type: str
   help: Minimum owi-metadatabase version required
-  default: "0.11.0"
+  default: "0.1.0"
 
 include_visualization:
   type: bool
@@ -812,8 +852,9 @@ include_numerical:
 ```
 
 **Template Structure**:
-```
-owi-metadatabase-extension-template/
+
+```text
+owi-metadatabase-ext-sdk-tpl/
 ├── copier.yml
 ├── README.md
 └── template/
@@ -856,6 +897,7 @@ owi-metadatabase-extension-template/
 **Key Template Files**:
 
 `template/pyproject.toml.jinja`:
+
 ```toml
 [project]
 name = "owi-metadatabase-{{ project_slug }}"
@@ -932,6 +974,7 @@ known-first-party = ["owi.metadatabase.{{ project_slug }}"]
 ```
 
 `template/src/owi/metadatabase/{{ project_slug }}/__init__.py.jinja`:
+
 ```python
 """{{ project_description }}."""
 
@@ -946,6 +989,7 @@ __all__ = ["{{ project_name }}API"]
 ### 7.2 Usage of Copier Template
 
 **Creating a new extension package**:
+
 ```bash
 # Install copier
 uv tool install copier
@@ -967,7 +1011,9 @@ uv run invoke docs.build
 ```
 
 ### 7.3 Documentation for Extensions
+
 Create `docs/development/namespace_packages.md`:
+
 ```markdown
 # Creating Extension Packages
 
@@ -976,16 +1022,9 @@ Create `docs/development/namespace_packages.md`:
 The OWI Metadatabase SDK uses a namespace package structure that allows
 for modular extensions. To create a new extension:
 
-1. Install copier:
-   ```bash
-   uv tool install copier
-   ```
-
+1. Install copier: `uv tool install copier`
 2. Generate your extension:
-   ```bash
-   copier copy gh:OWI-Lab/owi-metadatabase-extension-template owi-metadatabase-<name>
-   ```
-
+   `copier copy gh:OWI-Lab/owi-metadatabase-ext-sdk-tpl owi-metadatabase-<name>-sdk`
 3. Follow the prompts to customize your package
 
 ## Import Patterns
@@ -1007,21 +1046,23 @@ from owi.metadatabase.soil import SoilAPI
 ## PEP 420 Namespace Structure
 
 The namespace merging works because:
-- No __init__.py in `src/owi/` directory
+
+- No `__init__.py` in `src/owi/` directory
 - Each package contributes to `owi.metadatabase` namespace
 - Python automatically merges the namespaces
 
 ## Testing Namespace Imports
 
 Verify namespace package structure:
+
 ```python
 import owi.metadatabase
 # Should not have __file__ attribute (namespace package)
 assert not hasattr(owi.metadatabase, '__file__')
 ```
-```
 
 ### 7.4 Validation Tests
+
 ```python
 # tests/test_namespace.py
 def test_namespace_package_structure():
@@ -1040,12 +1081,14 @@ def test_base_modules_importable():
 ## 🎯 Phase 8: Migration Execution & Validation
 
 ### 8.1 Pre-Migration Checklist
+
 - [ ] Tag current version as `v0.10.6-legacy`
 - [ ] Create migration branch: `feature/namespace-package`
 - [ ] Backup test data
 - [ ] Document breaking changes
 
 ### 8.2 Migration Execution Order
+
 1. [ ] Phase 1: Restructure code
 2. [ ] Phase 2: Update build system (pyproject.toml, uv)
 3. [ ] Phase 3: Update tests (mirror structure + extensive doctest)
@@ -1055,6 +1098,7 @@ def test_base_modules_importable():
 7. [ ] Phase 7: Create Copier template
 
 ### 8.3 Validation Checklist
+
 - [ ] All tests pass on Python 3.9-3.13
 - [ ] Documentation builds without warnings: `invoke docs.build`
 - [ ] Package installs correctly: `uv pip install -e .`
@@ -1065,52 +1109,40 @@ def test_base_modules_importable():
 - [ ] Test package build: `uv build`
 - [ ] Invoke tasks work: `invoke test.all`, `invoke qa.all`, `invoke docs.all`
 
-### 8.4 Breaking Changes Communication
-Create `MIGRATION.md`:
-```markdown
-# Migration Guide: v0.10.x → v0.11.0
-
-## Package Name Change
-- **Old**: `owi-metadatabase-sdk`
-- **New**: `owi-metadatabase`
-
-Uninstall old package:
-```bash
-pip uninstall owi-metadatabase-sdk
-pip install owi-metadatabase
-```
-
 ## Import Changes
 
 ### Old Imports (v0.10.x)
+
 ```python
 from owimetadatabase_preprocessor.geometry import load_geometry
 from owimetadatabase_preprocessor.locations.io import LocationsAPI
 ```
 
 ### New Imports (v0.11.0+)
+
 ```python
 from owi.metadatabase.geometry.io import GeometryAPI
 from owi.metadatabase.locations.io import LocationsAPI
 ```
 
 ## Removed Modules
+
 - `fatigue` → Separate package `owi-metadatabase-fatigue` (TBD)
 - `soil` → Separate package `owi-metadatabase-soil` (TBD)
 - `results` → Removed (functionality consolidated elsewhere)
 
 ## New Features
+
 - ✨ Namespace package architecture
 - ✨ Extensive doctest coverage
 - ✨ MkDocs documentation with Material theme
 - ✨ Invoke task automation
 - ✨ Ty type checking
-```
 
 ## ⚠️ Risk Assessment
 
 | Risk | Impact | Mitigation |
-|------|--------|------------|
+| - | - | - |
 | Breaking changes for existing users | **High** | Clear migration guide, detailed changelog |
 | Namespace import issues | **Medium** | Comprehensive testing, PEP 420 compliance |
 | Dependency conflicts | **Medium** | UV lock files, matrix testing |

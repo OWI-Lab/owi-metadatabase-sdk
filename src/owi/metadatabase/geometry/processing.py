@@ -752,20 +752,35 @@ class OWT:
             ind = 0
             _col = " from "
         altitude_val = float(altitude) if altitude is not None else float("nan")
-        df.loc[df.index[ind], "Elevation" + _col + "[mLAT]"] = altitude_val
+        row_index = df.index[ind]
+        df.loc[row_index, "Elevation" + _col + "[mLAT]"] = altitude_val
+        col_elev_from = df.columns.get_loc("Elevation from [mLAT]")
+        col_elev_to = df.columns.get_loc("Elevation to [mLAT]")
+        col_diam_from = df.columns.get_loc("Diameter from [m]")
+        col_diam_to = df.columns.get_loc("Diameter to [m]")
+        if not isinstance(col_elev_from, int):
+            raise ValueError("Expected scalar columns for elevation data.")
+        if not isinstance(col_elev_to, int):
+            raise ValueError("Expected scalar columns for elevation data.")
+        if not isinstance(col_diam_from, int):
+            raise ValueError("Expected scalar columns for diameter data.")
+        if not isinstance(col_diam_to, int):
+            raise ValueError("Expected scalar columns for diameter data.")
         elevation = [
-            float(df.iloc[ind]["Elevation from [mLAT]"]),
-            float(df.iloc[ind]["Elevation to [mLAT]"]),
+            float(cast(float, df.iat[ind, col_elev_from])),
+            float(cast(float, df.iat[ind, col_elev_to])),
         ]
         diameters = [
-            float(df.iloc[ind]["Diameter from [m]"]),
-            float(df.iloc[ind]["Diameter to [m]"]),
+            float(cast(float, df.iat[ind, col_diam_from])),
+            float(cast(float, df.iat[ind, col_diam_to])),
         ]
-        df.loc[df.index[ind], "Diameter" + _col + "[m]"] = np.interp(
-            [altitude_val],
-            elevation,
-            diameters,
-        )[0]
+        df.loc[row_index, "Diameter" + _col + "[m]"] = float(
+            np.interp(
+                altitude_val,
+                elevation,
+                diameters,
+            )
+        )
         cols = ["Height [m]", "Volume [m3]", "Mass [t]", "rho [t/m]"]
         df.loc[df.index[ind], cols] = self.can_adjust_properties(df.iloc[ind])
         return df

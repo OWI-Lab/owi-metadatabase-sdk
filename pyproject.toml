@@ -1,6 +1,6 @@
 [project]
 name = "owi-metadatabase"
-version = "0.11.0"
+version = "0.1.0"
 description = "Core SDK for OWI-Lab metadatabase: geometry and location data"
 authors = [{ name = "arsmlnkv", email = "arsen.melnikov@vub.be" },
            { name = "Pietro D'Antuono", email = "pietro.dantuono@vub.be" }]
