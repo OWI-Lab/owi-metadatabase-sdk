@@ -1,13 +1,14 @@
-# Migration Guide: v0.10.x → v0.11.0
+# Migration Guide: owimetadatabase-preprocessor v0.10.x → owi-metadatabase v0.1.0
 
-This guide helps you migrate from `owi-metadatabase-sdk` v0.10.x to v0.11.0.
+This guide helps you migrate from `owimetadatabase-preprocessor` v0.10.x to `owi-metadatabase` v0.1.0.
 
 ## ⚠️ Breaking Changes
 
 ### 1. Package Name Change
 
 **PyPI Package Name:**
-- Old: `owi-metadatabase-sdk`
+
+- Old: `owimetadatabase-preprocessor`
 - New: `owi-metadatabase`
 
 **Note**: The GitHub repository name remains `owi-metadatabase-sdk`.
@@ -17,13 +18,13 @@ This guide helps you migrate from `owi-metadatabase-sdk` v0.10.x to v0.11.0.
 All import paths have changed to use the new namespace package structure:
 
 ```python
-# ❌ Old (v0.10.x)
+# ❌ Old (owimetadatabase-preprocessor v0.10.x)
 from owimetadatabase_preprocessor.geometry import GeometryAPI
 from owimetadatabase_preprocessor.locations.io import LocationsAPI
 from owimetadatabase_preprocessor.geometry.processing import OWT
 from owimetadatabase_preprocessor.utility.exceptions import APIConnectionError
 
-# ✅ New (v0.11.0+)
+# ✅ New (owi-metadatabase v0.1.0+)
 from owi.metadatabase.geometry.io import GeometryAPI
 from owi.metadatabase.locations.io import LocationsAPI
 from owi.metadatabase.geometry.processing import OWT
@@ -56,12 +57,12 @@ pip install owi-metadatabase
 
 Use find-and-replace in your codebase:
 
-| Old Import | New Import |
-|------------|------------|
-| `owimetadatabase_preprocessor.geometry` | `owi.metadatabase.geometry` |
+| Old Import                               | New Import                   |
+|------------------------------------------|------------------------------|
+| `owimetadatabase_preprocessor.geometry`  | `owi.metadatabase.geometry`  |
 | `owimetadatabase_preprocessor.locations` | `owi.metadatabase.locations` |
-| `owimetadatabase_preprocessor.utility` | `owi.metadatabase._utils` |
-| `owimetadatabase_preprocessor.io` | `owi.metadatabase.io` |
+| `owimetadatabase_preprocessor.utility`   | `owi.metadatabase._utils`    |
+| `owimetadatabase_preprocessor.io`        | `owi.metadatabase.io`        |
 
 ### Step 4: Update API Imports
 
@@ -100,7 +101,7 @@ Here's a Python script to help automate the migration:
 ```python
 #!/usr/bin/env python3
 """
-Automated migration script for owi-metadatabase v0.11.0
+Automated migration script for owi-metadatabase v0.1.0
 """
 from pathlib import Path
 import re
@@ -166,18 +167,18 @@ print(f"✓ Migration successful! Version: {owi.metadatabase.__version__}")
 
 ## Key Changes Summary
 
-| Aspect | v0.10.x | v0.11.0 |
-|--------|---------|---------|
-| PyPI Package | `owi-metadatabase-sdk` | `owi-metadatabase` |
-| Import Root | `owimetadatabase_preprocessor` | `owi.metadatabase` |
-| Package Type | Regular package | PEP 420 namespace package |
-| Fatigue Module | Included | Separate package (future) |
-| Soil Module | Included | Separate package (future) |
-| Line Length | 127 characters | 120 characters |
-| Docstring Style | PEP 257 | NumPy |
-| Documentation | Sphinx | MkDocs Material |
+| Aspect          | owimetadatabase-preprocessor v0.10.x | owi-metadatabase v0.1.0   |
+|-----------------|--------------------------------------|---------------------------|
+| PyPI Package    | `owi-metadatabase-sdk`               | `owi-metadatabase`        |
+| Import Root     | `owimetadatabase_preprocessor`       | `owi.metadatabase`        |
+| Package Type    | Regular package                      | PEP 420 namespace package |
+| Fatigue Module  | Included                             | Separate package (future) |
+| Soil Module     | Included                             | Separate package (future) |
+| Line Length     | 127 characters                       | 120 characters            |
+| Docstring Style | PEP 257                              | NumPy                     |
+| Documentation   | Sphinx                               | MkDocs Material           |
 
-## Benefits of v0.11.0
+## Benefits of v0.1.0
 
 - ✨ **Namespace package architecture** - Modular, extensible design
 - 📦 **Cleaner dependencies** - Core package has fewer dependencies

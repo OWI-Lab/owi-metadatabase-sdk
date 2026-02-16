@@ -1,12 +1,14 @@
 # OWI-metadatabase SDK
 
-[![version](https://img.shields.io/pypi/v/owi-metadatabase)](https://pypi.org/project/owi-metadatabase/)
-[![python versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)](https://pypi.org/project/owi-metadatabase/)
+[![version](https://img.shields.io/pypi/v/owi-metadatabase)](https://test.pypi.org/project/owi-metadatabase/)
+[![python versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)](https://test.pypi.org/project/owi-metadatabase/)
 [![license](https://img.shields.io/github/license/owi-lab/owi-metadatabase-sdk)](https://github.com/OWI-Lab/owi-metadatabase-sdk/blob/main/LICENSE)
 [![pytest](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=pytest)](https://github.com/OWI-Lab/owi-metadatabase-sdk/actions/workflows/ci.yml)
 [![lint](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=lint)](https://github.com/OWI-Lab/owi-metadatabase-sdk/actions/workflows/ci.yml)
 [![issues](https://img.shields.io/github/issues/owi-lab/owi-metadatabase-sdk)](https://github.com/OWI-Lab/owi-metadatabase-sdk/issues)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17531273.svg)](https://doi.org/10.5281/zenodo.10620568)
+[coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
+[docs](https://img.shields.io/badge/docs-mkdocs-blue)
 
 **Core SDK for OWI-Lab metadatabase: geometry and location data processing.**
 
@@ -20,9 +22,10 @@ A modern Python namespace package providing tools for working with offshore wind
 - **Locations Module**: Handle geographic location and site data
 - **API Integration**: Seamless connection to OWI-metadatabase API
 - **Extensible**: Namespace package architecture supports future extensions
-  - **Template for future package extensions**: Copier template soon available [here](...)
-
-    - `owi-metadatabase-fatigue`, `owi-metadatabase-soil`, `owi-metadatabase-results`
+  - **Template for future package extensions**: Copier template soon available on [GitHub](https://github.com/OWI-Lab/owi-metadatabase-ext-sdk-tpl)
+  - [`owi-metadatabase-soil`](https://github.com/OWI-Lab/owi-metadatabase-soil-sdk),
+  - `owi-metadatabase-fatigue` (planned)
+  - `owi-metadatabase-results` (planned)
 
 ## Installation
 
@@ -77,7 +80,7 @@ See the [Quick Start Guide](https://owi-lab.github.io/owi-metadatabase-sdk/getti
 
 ## 🔄 Migration from v0.10.x
 
-If you're upgrading from `owi-metadatabase-sdk` v0.10.x, see our [Migration Guide](https://owi-lab.github.io/owi-metadatabase-sdk/getting-started/migration/).
+If you're migrating from `pwimetadatabase-preprocessor` v0.10.x, see our [Migration Guide](https://owi-lab.github.io/owi-metadatabase-sdk/dev/getting-started/migration/).
 
 **Key Changes:**
 
@@ -196,7 +199,7 @@ This package was developed as part of:
 | Version       | ![PyPI Version](https://img.shields.io/pypi/v/owi-metadatabase)                                                       |
 | Python        | ![Python Versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)                                           |
 | Tests         | ![Test Status](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=tests) |
-| Coverage      | 76%                                                                                                                   |
+| Coverage      | ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)                                                  |
 | Documentation | ![Docs](https://img.shields.io/badge/docs-mkdocs-blue)                                                                |
 | License       | ![License](https://img.shields.io/github/license/owi-lab/owi-metadatabase-sdk)                                        |
 
@@ -209,8 +212,8 @@ This package was developed as part of:
 
 - **Issues**: [GitHub Issues](https://github.com/OWI-Lab/owi-metadatabase-sdk/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/OWI-Lab/owi-metadatabase-sdk/discussions)
-- **Email**: [info@owi-lab.be](mailto:info@owi-lab.be)
+- **Email**: [pietro.dantuono@vub.be](mailto:pietro.dantuono@vub.be)
 
 ---
 
-**Built with ❤️ and 🧠 by OWI-Lab**
+### Built with ❤️ and 🧠 by OWI-Lab

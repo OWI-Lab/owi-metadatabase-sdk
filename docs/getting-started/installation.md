@@ -40,7 +40,7 @@ Check that the package is installed correctly:
 ```python
 import owi.metadatabase
 print(owi.metadatabase.__version__)
-# Output: 0.1.0
+# Output: 0.1.1
 ```
 
 Test basic imports:
@@ -89,10 +89,10 @@ uv sync --dev
 If you encounter import errors, ensure you're using the new import paths:
 
 ```python
-# ✗ Old (v0.10.x)
+# ✗ Old (owimetadatabase-preprocessor v0.10.x)
 from owimetadatabase_preprocessor.geometry import GeometryAPI
 
-# ✓ New (v0.11.0+)
+# ✓ New (owi-metadatabase v0.1.1+)
 from owi.metadatabase.geometry.io import GeometryAPI
 ```
 
