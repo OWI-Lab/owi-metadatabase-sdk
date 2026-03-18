@@ -7,8 +7,8 @@
 [![lint](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=lint)](https://github.com/OWI-Lab/owi-metadatabase-sdk/actions/workflows/ci.yml)
 [![issues](https://img.shields.io/github/issues/owi-lab/owi-metadatabase-sdk)](https://github.com/OWI-Lab/owi-metadatabase-sdk/issues)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17531273.svg)](https://doi.org/10.5281/zenodo.10620568)
-[coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
-[docs](https://img.shields.io/badge/docs-mkdocs-blue)
+[![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)]
+[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
 
 **Core SDK for OWI-Lab metadatabase: geometry and location data processing.**
 
