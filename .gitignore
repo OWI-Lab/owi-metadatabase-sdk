@@ -6,6 +6,10 @@ __pycache__
 .pytest_cache
 .mypy_cache
 .nox
+.hypothesis/
+.cache/
+site/
+htmlcov/
 
 # Log files
 *.log
