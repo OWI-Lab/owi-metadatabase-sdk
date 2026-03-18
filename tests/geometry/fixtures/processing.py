@@ -126,9 +126,9 @@ def sa_list_out(data, api_root, header, materials_dicts_init, bb_list_in):
 
 @pytest.fixture(scope="function")
 def owt_init(api_test, materials_df, sa_list_out, data, loc):
-    tw_sa = pd.DataFrame(data["sa_prop"][2]["df"]).drop(columns=["absolute_position, m"], axis=1).set_index("title")
-    tp_sa = pd.DataFrame(data["sa_prop"][0]["df"]).drop(columns=["absolute_position, m"], axis=1).set_index("title")
-    mp_sa = pd.DataFrame(data["sa_prop"][1]["df"]).drop(columns=["absolute_position, m"], axis=1).set_index("title")
+    tw_sa = pd.DataFrame(data["sa_prop"][2]["df"]).drop(columns=["absolute_position, m"]).set_index("title")
+    tp_sa = pd.DataFrame(data["sa_prop"][0]["df"]).drop(columns=["absolute_position, m"]).set_index("title")
+    mp_sa = pd.DataFrame(data["sa_prop"][1]["df"]).drop(columns=["absolute_position, m"]).set_index("title")
     return {
         "_init_proc": False,
         "_init_spec_part": False,

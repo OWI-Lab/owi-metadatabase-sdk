@@ -75,6 +75,8 @@ jobs:
             GitVersion.yml \
             pyproject.toml \
             src/owi/metadatabase/_version.py \
+            tests/test_imports.py \
+            tests/test_namespace.py \
             uv.lock
           git commit -m "Bumpversion ${{ steps.release_plan.outputs.current_version }} -> v${{ steps.release_plan.outputs.next_version }}"
           git tag -a "v${{ steps.release_plan.outputs.next_version }}" -m "Release v${{ steps.release_plan.outputs.next_version }}"

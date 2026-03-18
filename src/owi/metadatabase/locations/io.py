@@ -328,7 +328,7 @@ class LocationsAPI(API):
                 f"No asset locations found for the given parameters: {kwargs}. \
                 Please check for typos or if it is expected to exists."
             )
-        fig = px.scatter_mapbox(
+        fig = px.scatter_map(
             assetlocations,
             lat="northing",
             lon="easting",
@@ -337,7 +337,7 @@ class LocationsAPI(API):
             zoom=9.6,
             height=500,
         )
-        fig.update_layout(mapbox_style="open-street-map")
+        fig.update_layout(map_style="open-street-map")
         fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
         if return_fig:
             return fig

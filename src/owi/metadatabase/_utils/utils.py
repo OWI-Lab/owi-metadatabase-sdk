@@ -167,8 +167,10 @@ def check_df_eq(df1: pd.DataFrame, df2: pd.DataFrame, tol: float = 1e-9) -> bool
         atol=tol,
         equal_nan=True,
     )
-    str_cols_eq = df1.select_dtypes(include="object").equals(df2.select_dtypes(include="object"))
-    return num_cols_eq and str_cols_eq
+    non_num_cols_eq = (
+        df1.select_dtypes(exclude="number").astype(object).equals(df2.select_dtypes(exclude="number").astype(object))
+    )
+    return num_cols_eq and non_num_cols_eq
 
 
 def deepcompare(a: Any, b: Any, tol: float = 1e-5) -> tuple[bool, None | str]:

@@ -274,30 +274,33 @@ class BuildingBlock(BaseStructure):
         >>> BuildingBlock(data).title
         'BB_1'
         """
-        self.id = json["id"]
-        self.title = json["title"]
-        if json["description"]:
-            self.description = json["description"]
-        else:
+        json_data = dict(json)
+        self.id = json_data["id"]
+        self.title = json_data["title"]
+        description = json_data.get("description")
+        if description is None or pd.isna(description):
             self.description = ""
+            json_data["description"] = None
+        else:
+            self.description = str(description)
         self.position = Position(
-            x=json["x_position"],
-            y=json["y_position"],
-            z=json["z_position"],
-            alpha=json["alpha"],
-            beta=json["beta"],
-            gamma=json["gamma"],
-            reference_system=json["vertical_position_reference_system"],
+            x=json_data["x_position"],
+            y=json_data["y_position"],
+            z=json_data["z_position"],
+            alpha=json_data["alpha"],
+            beta=json_data["beta"],
+            gamma=json_data["gamma"],
+            reference_system=json_data["vertical_position_reference_system"],
         )
         self.material = None
-        if "material" in json and subassembly:
-            material_id = json["material"]
+        if "material" in json_data and subassembly:
+            material_id = json_data["material"]
             if material_id and not np.isnan(material_id):
                 for mat in subassembly.materials:
                     if np.int64(mat.id) == np.int64(material_id):
                         self.material = mat
                         break
-        self.json = json
+        self.json = cast(DataBB, json_data)
 
     @property
     def type(self) -> str:
@@ -783,19 +786,21 @@ class SubAssembly(BaseStructure):
         >>> sa.title
         'SA_1'
         """
+        json_data = dict(json)
         self.api = api_object
-        self.id = json["id"]
-        self.title = json["title"]
-        self.description = json["description"]
+        self.id = json_data["id"]
+        self.title = json_data["title"]
+        description = json_data.get("description")
+        self.description = description
         self.position = Position(
-            x=json["x_position"],
-            y=json["y_position"],
-            z=json["z_position"],
-            reference_system=json["vertical_position_reference_system"],
+            x=json_data["x_position"],
+            y=json_data["y_position"],
+            z=json_data["z_position"],
+            reference_system=json_data["vertical_position_reference_system"],
         )
-        self.type = json["subassembly_type"]
-        self.source = json["source"]
-        self.asset = json["asset"]
+        self.type = json_data["subassembly_type"]
+        self.source = json_data["source"]
+        self.asset = json_data["asset"]
         self.bb = None
         materials_df = cast(pd.DataFrame, materials)
         self.materials = [Material(cast(DataMat, m.to_dict())) for _, m in materials_df.iterrows()]
