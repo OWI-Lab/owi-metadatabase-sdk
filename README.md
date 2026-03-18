@@ -1,7 +1,7 @@
 # OWI-metadatabase SDK
 
-[![version](https://img.shields.io/pypi/v/owi-metadatabase)](https://test.pypi.org/project/owi-metadatabase/)
-[![python versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)](https://test.pypi.org/project/owi-metadatabase/)
+[![version](https://img.shields.io/pypi/v/owi-metadatabase)](https://pypi.org/project/owi-metadatabase/)
+[![python versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)](https://pypi.org/project/owi-metadatabase/)
 [![license](https://img.shields.io/github/license/owi-lab/owi-metadatabase-sdk)](https://github.com/OWI-Lab/owi-metadatabase-sdk/blob/main/LICENSE)
 [![pytest](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=pytest)](https://github.com/OWI-Lab/owi-metadatabase-sdk/actions/workflows/ci.yml)
 [![lint](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=lint)](https://github.com/OWI-Lab/owi-metadatabase-sdk/actions/workflows/ci.yml)
