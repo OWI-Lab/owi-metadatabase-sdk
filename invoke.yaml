@@ -18,4 +18,4 @@ dist_dir: dist
 site_dir: site
 
 # Python configuration
-python_version: "3.9"
+python_version: "3.13"

@@ -9,7 +9,7 @@ from owi.metadatabase._utils.utils import dict_generator
 
 
 @pytest.fixture
-def data_subassemblies(request) -> list[dict[str, object]]:
+def data_subassemblies(request) -> list[dict[str, Any]]:
     if request.param is not None:
         params = request.param
     data_original = [
@@ -150,7 +150,7 @@ def data_subassemblies_call() -> Callable[[str], Any]:
 
 
 @pytest.fixture
-def data_buildingblocks(request) -> list[dict[str, object]]:
+def data_buildingblocks(request) -> list[dict[str, Any]]:
     if request.param is not None:
         params = request.param
     data_original = [

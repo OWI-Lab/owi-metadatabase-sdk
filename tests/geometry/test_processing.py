@@ -1,4 +1,5 @@
 import warnings
+from typing import cast
 
 import pandas as pd
 import pandas.testing as pd_testing
@@ -198,7 +199,7 @@ class TestOWTs:
         owts._concat_list(["tower"])
         dict__ = {k: [*v, *v] for k, v in dict_.items()}
         df = pd.DataFrame(dict__).set_index("title")
-        pd_testing.assert_frame_equal(owts.tower, df)
+        pd_testing.assert_frame_equal(cast(pd.DataFrame, owts.tower), df)
 
     def test_process_structures(self, owts, owts_true):
         owts.process_structures()

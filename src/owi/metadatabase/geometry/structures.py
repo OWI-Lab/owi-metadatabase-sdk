@@ -1020,24 +1020,25 @@ class SubAssembly(BaseStructure):
                 "type": "linear",
             },
         )
-        markers: list[dict[str, Any]] = []
+        markers: list[go.Scattergl] = []
         if self.bb:
             for bb in self.bb:
                 if bb.marker:
                     marker = bb.marker
-                    marker_dict = {
-                        "x": [x_offset + float(marker["x"])],
-                        "y": [float(marker["z"]) + self.position.z],
-                        "mode": "markers",
-                        "marker": {
-                            "size": [np.float64(round(float(marker["radius"]) ** (1 / 3)))],
-                            "color": "grey",
-                        },
-                        "hovertext": marker["hovertext"],
-                        "hoverinfo": "text",
-                        "name": bb.title,
-                    }
-                    markers.append(marker_dict)
+                    markers.append(
+                        go.Scattergl(
+                            x=[x_offset + float(marker["x"])],
+                            y=[float(marker["z"]) + self.position.z],
+                            mode="markers",
+                            marker={
+                                "size": [np.float64(round(float(marker["radius"]) ** (1 / 3)))],
+                                "color": "grey",
+                            },
+                            hovertext=marker["hovertext"],
+                            hoverinfo="text",
+                            name=bb.title,
+                        )
+                    )
         data.extend(markers)
         return data, layout
 

@@ -324,7 +324,7 @@ class OWT:
             "Mass [t]",
             "rho [t/m]",
         ]
-        return df[cols]
+        return df.loc[:, cols].copy()
 
     def process_rna(self) -> None:
         """
@@ -451,7 +451,7 @@ class OWT:
         df["Y [m]"] = df.y * 1e-3
         df.rename(columns={"description": "Description"}, inplace=True)
         cols = ["X [m]", "Y [m]", "Z [mLAT]", "Mass [t]", "Description"]
-        return df[cols]
+        return df.loc[:, cols].copy()
 
     def set_df_distributed_appurtenances(self, idx: str) -> pd.DataFrame:
         """
@@ -550,7 +550,7 @@ class OWT:
             "Volume [m3]",
             "Description",
         ]
-        return df[cols]
+        return df.loc[:, cols].copy()
 
     def process_structure(self, option="full") -> None:
         """
@@ -859,7 +859,7 @@ class OWT:
         if (self.transition_piece is not None) and (self.monopile is not None):
             mp_head = self.pile_head
             tp = self.transition_piece
-            df = deepcopy(tp[tp["Elevation from [mLAT]"] > mp_head])
+            df = deepcopy(tp.loc[tp["Elevation from [mLAT]"] > mp_head, :])
             if df.loc[df.index[0], "Elevation to [mLAT]"] != mp_head:
                 # Not bolted connection (i.e. Rentel) preprocessing needed
                 tp1 = self.can_modification(df, mp_head, position="bottom")
@@ -867,7 +867,7 @@ class OWT:
             else:
                 # Bolted connection, nothing to do
                 self.substructure = pd.concat([df, deepcopy(self.monopile)])
-            df = deepcopy(tp[tp["Elevation to [mLAT]"] < mp_head])
+            df = deepcopy(tp.loc[tp["Elevation to [mLAT]"] < mp_head, :])
             self.tp_skirt = self.can_modification(df, mp_head, position="top")
         else:
             raise TypeError("TP or MP items need to be processed before!")
