@@ -73,6 +73,7 @@ jobs:
           git add \
             .bumpversion.cfg \
             GitVersion.yml \
+            docs/getting-started/installation.md \
             pyproject.toml \
             src/owi/metadatabase/_version.py \
             tests/test_imports.py \

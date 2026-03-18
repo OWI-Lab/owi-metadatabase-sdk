@@ -10,7 +10,7 @@
 - Base API errors use custom exceptions in src/owi/metadatabase/_utils/exceptions.py; prefer these over generic exceptions for request/processing failures.
 - Geometry processing expects calling OWT.process_structure() or OWTs.process_structures() before accessing derived attributes; warnings are emitted if accessed early.
 - Code style uses ruff with 120-char lines (see pyproject.toml); keep NumPy-style docstrings and doctests consistent with existing modules.
-- Type hints are expected for public methods in src/owi/metadatabase (mypy overrides enforce typed defs).
+- Type hints are expected for public methods in src/owi/metadatabase (ty overrides enforce typed defs).
 - Prefer f-strings for formatting; if logging is introduced, use the logging module and %-formatting.
 - Prefer pandas/numpy for data manipulation to match existing APIs; avoid ad-hoc dict lists when a DataFrame is expected.
 

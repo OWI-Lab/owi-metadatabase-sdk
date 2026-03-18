@@ -1,7 +1,5 @@
 """Module to connect to the database API to retrieve and operate on results data."""
 
-# mypy: ignore-errors
-
 from typing import Union
 
 import numpy as np

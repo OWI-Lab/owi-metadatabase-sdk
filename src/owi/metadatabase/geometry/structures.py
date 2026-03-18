@@ -1,7 +1,5 @@
 """Module containing the data classes for the geometry module."""
 
-# mypy: ignore-errors
-
 from typing import Any, TypedDict, Union, cast
 
 import matplotlib.patches as mpatches

@@ -1,7 +1,5 @@
 """Module containing the processing functions for the geometry data."""
 
-# mypy: ignore-errors
-
 import typing
 import warnings
 from copy import deepcopy

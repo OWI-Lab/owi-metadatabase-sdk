@@ -155,37 +155,10 @@ convention = "numpy"
 known-first-party = ["owi.metadatabase"]
 
 
-[tool.mypy]
-python_version = "3.9"
-mypy_path = ["src/", "tests/"]
-explicit_package_bases = true
-
-pretty = true
-warn_unused_ignores = true
-warn_redundant_casts = true
-strict_equality = true
-
-ignore_missing_imports = true
-follow_imports = "silent"
-
-files = ["src/", "tests/"]
-
-
-[[tool.mypy.overrides]]
-module = "owi.metadatabase.*"
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-
-
-[[tool.mypy.overrides]]
-module = "matplotlib.*,plotly.*,pyproj.*,groundhog.*"
-ignore_missing_imports = true
-
-
 [tool.deptry.per_rule_ignores]
 DEP002 = ["plotly", "matplotlib", "pyproj", "tqdm"]
 DEP003 = ["owi"]
+DEP004 = ["owi"]
 
 
 [build-system]

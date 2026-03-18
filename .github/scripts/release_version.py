@@ -7,13 +7,15 @@ import json
 import re
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[2]
 PYPROJECT_PATH = ROOT / "pyproject.toml"
 PACKAGE_VERSION_PATH = ROOT / "src/owi/metadatabase/_version.py"
 BUMPVERSION_PATH = ROOT / ".bumpversion.cfg"
 GITVERSION_PATH = ROOT / "GitVersion.yml"
 UV_LOCK_PATH = ROOT / "uv.lock"
+TEST_IMPORTS_PATH = ROOT / "tests/test_imports.py"
+TEST_NAMESPACE_PATH = ROOT / "tests/test_namespace.py"
+INSTALLATION_DOC_PATH = ROOT / "docs/getting-started/installation.md"
 
 RELEASE_LABELS = {
     "release:major": "major",
@@ -121,6 +123,31 @@ def apply_version(new_version: str) -> list[str]:
             r'(\[\[package\]\]\nname = "owi-metadatabase"\nversion = ")\d+\.\d+\.\d+("\nsource = \{ editable = "\." \})',
             rf'\g<1>{new_version}\2',
         ),
+        (
+            TEST_IMPORTS_PATH,
+            r'^(\s*assert __version__ == ")\d+\.\d+\.\d+("\s*)$',
+            rf'\g<1>{new_version}\2',
+        ),
+        (
+            TEST_NAMESPACE_PATH,
+            r"^(')\d+\.\d+\.\d+(')$",
+            rf'\g<1>{new_version}\2',
+        ),
+        (
+            TEST_NAMESPACE_PATH,
+            r'^(\s*assert __version__ == ")\d+\.\d+\.\d+("\s*)$',
+            rf'\g<1>{new_version}\2',
+        ),
+        (
+            INSTALLATION_DOC_PATH,
+            r'^(# Output: )\d+\.\d+\.\d+(\s*)$',
+            rf'\g<1>{new_version}\2',
+        ),
+        (
+            INSTALLATION_DOC_PATH,
+            r'^(# ✓ New \(owi-metadatabase v)\d+\.\d+\.\d+(\+\)\s*)$',
+            rf'\g<1>{new_version}\2',
+        ),
     ]
 
     for path, pattern, replacement in replacements:
@@ -128,7 +155,9 @@ def apply_version(new_version: str) -> list[str]:
         updated = _replace_once(original, pattern, replacement, path)
         if updated != original:
             path.write_text(updated, encoding="utf-8")
-            changed_paths.append(str(path.relative_to(ROOT)))
+            relative_path = str(path.relative_to(ROOT))
+            if relative_path not in changed_paths:
+                changed_paths.append(relative_path)
 
     return changed_paths
 
