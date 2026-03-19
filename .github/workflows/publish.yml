@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   publish:
-    if: ${{ github.event_name == 'workflow_call' || inputs.confirm_publish == true }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.confirm_publish == true }}
     runs-on: ubuntu-latest
     outputs:
       published_version: ${{ steps.package_version.outputs.version }}
@@ -66,7 +66,7 @@ jobs:
         } >> "$GITHUB_STEP_SUMMARY"
 
   documentation:
-    if: ${{ github.event_name == 'workflow_call' }}
+    if: ${{ needs.publish.result == 'success' }}
     needs: [publish]
     permissions:
       contents: write

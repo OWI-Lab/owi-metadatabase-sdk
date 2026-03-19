@@ -23,7 +23,7 @@ Workflow roles:
 - `ci.yml`: Runs tests, quality checks, and docs build validation on every push and on pull requests to `main`.
 - `release-preview.yml`: Shows the next semantic version implied by the PR labels.
 - `release-on-merge.yml`: Creates the version-bump release PR after a normal PR merge, enables auto-merge for that release PR, and tags/releases when the release PR merges.
-- `publish.yml`: Publishes the package to PyPI and then triggers documentation deployment for tagged releases.
+- `publish.yml`: Publishes the package to PyPI and then triggers documentation deployment after both release-driven and manual publishes.
 - `docs.yml`: Builds the documentation and publishes it to the `gh-pages` branch, either manually or when called by `publish.yml`.
 
 Workflow status table:
@@ -33,7 +33,7 @@ Workflow status table:
 | `ci.yml` | `push`, `pull_request` | Yes | No | Produces the required PR checks `CI / test (3.14)`, `CI / quality`, and `CI / docs`. |
 | `release-preview.yml` | `pull_request` | No | No | Informational semantic-version preview. Make it required only if you want label validation enforced at merge time. |
 | `release-on-merge.yml` | `pull_request_target` on closed PRs | No | No | Post-merge automation only; not a branch protection check. |
-| `publish.yml` | `workflow_call`, `workflow_dispatch` | No | Yes | Called automatically after a release PR merge, or manually for a controlled main-branch publish. |
+| `publish.yml` | `workflow_call`, `workflow_dispatch` | No | Yes | Called automatically after a release PR merge, or manually for a controlled main-branch publish; in both cases it proceeds to docs deployment after a successful package publish. |
 | `docs.yml` | `workflow_call`, `workflow_dispatch` | No | Yes | Called by `publish.yml` after package publication, or run manually to republish docs. |
 
 Expected repository setting:
