@@ -92,7 +92,9 @@ jobs:
             uv.lock
 
       - name: Enable release PR auto-merge
+        id: enable_automerge
         if: ${{ steps.release_pr.outputs.pull-request-number != '' }}
+        continue-on-error: true
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           pull-request-number: ${{ steps.release_pr.outputs.pull-request-number }}
@@ -108,7 +110,14 @@ jobs:
             echo "- Target version: v${{ steps.release_plan.outputs.next_version }}"
             echo "- Release PR operation: ${{ steps.release_pr.outputs.pull-request-operation || 'none' }}"
             echo "- Release PR: ${{ steps.release_pr.outputs.pull-request-url || 'not created' }}"
-            echo "- Release PR auto-merge: enabled"
+            if [[ "${{ steps.enable_automerge.outcome || 'skipped' }}" == "success" ]]; then
+              echo "- Release PR auto-merge: enabled"
+            elif [[ "${{ steps.release_pr.outputs.pull-request-number }}" != "" ]]; then
+              echo "- Release PR auto-merge: not enabled by workflow"
+              echo "- Auto-merge note: repository auto-merge being enabled is not sufficient when GITHUB_TOKEN is not authorized on the protected main branch"
+            else
+              echo "- Release PR auto-merge: skipped"
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
   tag-release:
