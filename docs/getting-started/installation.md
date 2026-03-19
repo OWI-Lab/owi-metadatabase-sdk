@@ -40,7 +40,7 @@ Check that the package is installed correctly:
 ```python
 import owi.metadatabase
 print(owi.metadatabase.__version__)
-# Output: 0.1.2
+# Output: 0.1.0
 ```
 
 Test basic imports:
@@ -108,7 +108,7 @@ If you encounter import errors, ensure you're using the new import paths:
 # ✗ Old (owimetadatabase-preprocessor v0.10.x)
 from owimetadatabase_preprocessor.geometry import GeometryAPI
 
-# ✓ New (owi-metadatabase v0.1.2+)
+# ✓ New (owi-metadatabase v0.1.0+)
 from owi.metadatabase.geometry.io import GeometryAPI
 ```
 

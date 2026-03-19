@@ -37,9 +37,9 @@ def test_version_accessible():
     --------
     >>> from owi.metadatabase._version import __version__
     >>> __version__
-    '0.1.2'
+    '0.1.0'
     """
-    assert __version__ == "0.1.2"
+    assert __version__ == "0.1.0"
 
 
 def test_geometry_module_importable():
