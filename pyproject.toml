@@ -72,6 +72,7 @@ docs = [
     "mkdocs >=1.6.0",
     "mkdocs-material >=9.5.0",
     "mkdocstrings[python] >=0.27.0",
+    "griffe <2.0.0",
     "mkdocs-jupyter >=0.25.0",
     "mkdocs-git-revision-date-localized-plugin >=1.3.0",
     "mkdocs-minify-plugin >=0.8.0",
@@ -162,7 +163,7 @@ known-first-party = ["owi.metadatabase"]
 
 
 [tool.deptry.per_rule_ignores]
-DEP002 = ["plotly", "matplotlib", "pyproj", "tqdm"]
+DEP002 = ["plotly", "matplotlib", "pyproj", "tqdm", "owi-metadatabase-soil"]
 DEP003 = ["owi"]
 DEP004 = ["owi"]
 
