@@ -123,6 +123,8 @@ jobs:
   tag-release:
     if: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/v') }}
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.release_tag.outputs.tag }}
     steps:
       - name: Checkout main
         uses: actions/checkout@v6
@@ -171,13 +173,29 @@ jobs:
             echo "- Published tag trigger: ${{ steps.release_tag.outputs.tag }}"
           } >> "$GITHUB_STEP_SUMMARY"
 
-  publish-package:
+  dispatch-publish:
     if: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/v') }}
     needs: [tag-release]
     permissions:
-      contents: write
-      id-token: write
-    uses: ./.github/workflows/publish.yml
-    with:
-      target_ref: main
-    secrets: inherit
+      actions: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch publish workflow for release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run publish.yml \
+            --ref "${{ needs.tag-release.outputs.tag }}" \
+            -f target_ref="${{ needs.tag-release.outputs.tag }}" \
+            -f publish_mode=release-tag \
+            -f confirm_publish=true
+
+      - name: Summarize publish dispatch
+        run: |
+          {
+            echo "## Publish Dispatched"
+            echo
+            echo "- Release tag: ${{ needs.tag-release.outputs.tag }}"
+            echo "- Publish workflow: publish.yml"
+            echo "- Trigger: workflow_dispatch"
+          } >> "$GITHUB_STEP_SUMMARY"
