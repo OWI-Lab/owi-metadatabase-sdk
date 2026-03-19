@@ -180,6 +180,12 @@ jobs:
       actions: write
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
       - name: Dispatch publish workflow for release tag
         env:
           GH_TOKEN: ${{ github.token }}
