@@ -43,6 +43,22 @@ Using uv (recommended for development):
 uv pip install owi-metadatabase
 ```
 
+### Install With Soil Extension
+
+Using pip:
+
+```bash
+pip install "owi-metadatabase[soil]"
+```
+
+Using uv:
+
+```bash
+uv pip install "owi-metadatabase[soil]"
+```
+
+In `zsh`, keep the extra in quotes because `[` and `]` are treated as glob characters.
+
 ### Development Installation
 
 For contributing to the package:
@@ -86,7 +102,7 @@ If you're migrating from `pwimetadatabase-preprocessor` v0.10.x, see our [Migrat
 
 - Package name: `owi-metadatabase-sdk` → `owi-metadatabase`
 - Import path: `owimetadatabase_preprocessor.*` → `owi.metadatabase.*`
-- Removed modules: `fatigue`, `soil`, and `results` (available as package extensions in the future)
+- Removed modules: `fatigue`, `soil`, and `results` (available as package extensions)
   Importable via: ` from owi.metadatabase.fatigue import FatigueAPI ` (when available)
 
 ## Development
@@ -139,7 +155,7 @@ src/owi/metadatabase/
 This package uses PEP 420 namespace packages, allowing modular extensions. Future packages will extend the `owi.metadatabase` namespace:
 
 - **`owi-metadatabase-fatigue`** (planned): Fatigue analysis tools
-- **`owi-metadatabase-soil`** (planned): Soil data processing
+- **`owi-metadatabase-soil`**: Soil data processing
 - **Your extension**: Create custom extensions using the namespace
 
 All extensions work seamlessly together:
