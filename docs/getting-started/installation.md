@@ -54,12 +54,28 @@ print("✓ Installation successful!")
 
 ## Optional Dependencies
 
+If you use `zsh`, wrap extras in quotes because `[` and `]` are treated as glob characters.
+
+### Soil
+
+To install the base package together with the soil extension:
+
+```bash
+pip install "owi-metadatabase[soil]"
+```
+
+Or with uv:
+
+```bash
+uv pip install "owi-metadatabase[soil]"
+```
+
 ### Documentation
 
 To build documentation locally:
 
 ```bash
-pip install owi-metadatabase[docs]
+pip install "owi-metadatabase[docs]"
 ```
 
 Or with uv:
@@ -73,7 +89,7 @@ uv sync --group docs
 For contributing to the project:
 
 ```bash
-pip install owi-metadatabase[dev]
+pip install "owi-metadatabase[dev]"
 ```
 
 Or with uv:

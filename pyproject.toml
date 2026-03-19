@@ -36,6 +36,11 @@ dependencies = [
     "matplotlib >=3.10.0 ; python_version >= '3.10'",
 ]
 
+[project.optional-dependencies]
+soil = [
+    "owi-metadatabase-soil >=0.1.0",
+]
+
 
 [dependency-groups]
 dev = [
@@ -170,11 +175,11 @@ build-backend = "hatchling.build"
 packages = ["src/owi"]
 
 
-[[tool.uv.index]]
-name = "testpypi"
-url = "https://test.pypi.org/simple"
-explicit = true
+# [[tool.uv.index]]
+# name = "testpypi"
+# url = "https://test.pypi.org/simple"
+# explicit = true
 
-[tool.uv.sources]
-owi-metadatabase-soil = { index = "testpypi" }
-owi-metadatabase-fatigue = { index = "testpypi" }
+# [tool.uv.sources]
+# owi-metadatabase-soil = { index = "testpypi" }
+# owi-metadatabase-fatigue = { index = "testpypi" }
