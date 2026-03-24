@@ -79,6 +79,9 @@ permissions:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/configure-pages@v5
@@ -87,7 +90,7 @@ jobs:
           ref: ${{ inputs.target_ref || github.event.inputs.target_ref || github.ref_name }}
           fetch-depth: 0
       - name: Set up Python "3.14"
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.14"
       - name: Install uv
