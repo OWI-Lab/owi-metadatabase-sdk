@@ -2,5 +2,5 @@
 
 Primary authors and maintainers:
 
-- Arsen Melnikov
-- Pietro D'Antuono
+- [Pietro D'Antuono](mailto:pietro.dantuono@vub.be)
+- [Arsen Melnikov](mailto:arsen.melnikov@vub.be)

@@ -1,21 +1,30 @@
 # Documentation
 
-Documentation is built with MkDocs Material and mkdocstrings.
+Documentation is built with [Zensical](https://zensical.dev/) and
+configured in `zensical.toml`. API reference pages are auto-generated
+from NumPy-style docstrings via mkdocstrings.
 
 ## Build
 
-```
+```bash
 uv run invoke docs.build
 ```
 
-## Serve Locally
+## Serve locally
 
-```
+```bash
 uv run invoke docs.serve
 ```
 
-The server is available at http://localhost:8001/owi-metadatabase-sdk/.
+The server is available at `http://localhost:8001/owi-metadatabase-sdk/`.
 
-## API Docs
+## Structure
 
-API pages are generated from NumPy-style docstrings.
+The documentation follows the [Diátaxis](https://diataxis.fr/) framework:
+
+| Section | Purpose | Directory |
+|---------|---------|-----------|
+| Tutorials | Learning-oriented lessons | `docs/tutorials/` |
+| How-to guides | Problem-oriented recipes | `docs/how-to/` |
+| Reference | Information-oriented descriptions | `docs/reference/` |
+| Explanation | Understanding-oriented discussions | `docs/explanation/` |

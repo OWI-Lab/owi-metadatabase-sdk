@@ -2,7 +2,7 @@ import os
 import shutil
 from typing import Any
 
-from invoke import task
+from invoke.tasks import task
 
 from .colors import Color, colorize
 from .system import (
@@ -22,51 +22,44 @@ def clean(c_r: Any) -> None:
 
 @task
 def build(c_r: Any) -> None:
-    """Build MkDocs documentation."""
+    """Build Zensical documentation."""
     tmp_str = colorize(
-        "\nBuilding MkDocs documentation...\n",
+        "\nBuilding Zensical documentation...\n",
         color=Color.HEADER,
         bold=True
     )
     print(tmp_str)
-    _command = "mkdocs build --strict"
+    _command = "zensical build --clean"
     print(f">>> {colorize(_command, color=Color.OKBLUE)}\n")
     c_r.run(_command, pty=PTY)
 
 
 @task
 def serve(c_r: Any) -> None:
-    """Serve MkDocs documentation with hot reload."""
-    DOCS_PORT = c_r.start_port + 1
-
+    """Serve Zensical documentation with hot reload."""
     tmp_str = colorize(
-        "\nStarting MkDocs server with hot reload...\n",
+        "\nStarting Zensical server with hot reload...\n",
         color=Color.HEADER,
         bold=True
     )
     print(tmp_str)
 
-    _command = f"mkdocs serve --dev-addr localhost:{DOCS_PORT}"
+    _command = "zensical serve"
     print(f">>> {colorize(_command, color=Color.OKBLUE)}\n")
-
-    url = f"http://localhost:{DOCS_PORT}"
-    print("Documentation server with hot reload hosted at:\n")
-    print(f"--> {colorize(url, underline=True)}\n")
-    print(f"Stop server: {colorize('Ctrl+C')}\n")
 
     c_r.run(_command, pty=PTY)
 
 
 @task
 def deploy(c_r: Any) -> None:
-    """Deploy documentation to GitHub Pages."""
+    """Build documentation for GitHub Pages deployment."""
     tmp_str = colorize(
-        "\nDeploying documentation to GitHub Pages...\n",
+        "\nPreparing documentation for GitHub Pages deployment...\n",
         color=Color.HEADER,
         bold=True
     )
     print(tmp_str)
-    _command = "mkdocs gh-deploy --force"
+    _command = "zensical build --clean"
     print(f">>> {colorize(_command, color=Color.OKBLUE)}\n")
     c_r.run(_command, pty=PTY)
 
@@ -78,30 +71,37 @@ def all(c_r: Any) -> None:
 
 @task
 def deploy_version(c_r: Any, version: str, alias: str = "latest") -> None:
-    """Deploy versioned documentation with mike."""
+    """Build documentation for deployment.
+
+    Version labels are retained for task compatibility but are not used by the
+    GitHub Pages artifact deployment flow.
+    """
     tmp_str = colorize(
-        f"\nDeploying docs version {version}...\n",
+        f"\nPreparing docs build for requested label {version}...\n",
         color=Color.HEADER,
         bold=True,
     )
     print(tmp_str)
-    if alias == version:
-        _command = f"mike deploy --push {version}"
-    else:
-        _command = f"mike deploy --push --update-aliases {version} {alias}"
+    if alias != version:
+        print(f"Ignoring docs alias {alias} under artifact deployment.\n")
+    _command = "zensical build --clean"
     print(f">>> {colorize(_command, color=Color.OKBLUE)}\n")
     c_r.run(_command, pty=PTY)
 
 
 @task
 def set_default_version(c_r: Any, version: str) -> None:
-    """Set the default documentation version with mike."""
+    """Build documentation for deployment.
+
+    Default-version selection is not used with the GitHub Pages artifact
+    deployment flow.
+    """
     tmp_str = colorize(
-        f"\nSetting default docs version to {version}...\n",
+        f"\nPreparing docs build for requested default label {version}...\n",
         color=Color.HEADER,
         bold=True,
     )
     print(tmp_str)
-    _command = f"mike set-default --push {version}"
+    _command = "zensical build --clean"
     print(f">>> {colorize(_command, color=Color.OKBLUE)}\n")
     c_r.run(_command, pty=PTY)

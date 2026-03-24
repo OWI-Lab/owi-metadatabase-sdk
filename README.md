@@ -8,7 +8,7 @@
 [![issues](https://img.shields.io/github/issues/owi-lab/owi-metadatabase-sdk)](https://github.com/OWI-Lab/owi-metadatabase-sdk/issues)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17531273.svg)](https://doi.org/10.5281/zenodo.10620568)
 ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
-[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
+[![Documentation](https://img.shields.io/badge/docs-zensical-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
 
 **Core SDK for OWI-Lab metadatabase: geometry and location data processing.**
 
@@ -24,8 +24,9 @@ A modern Python namespace package providing tools for working with offshore wind
 - **Extensible**: Namespace package architecture supports future extensions
   - **Template for future package extensions**: Copier template soon available on [GitHub](https://github.com/OWI-Lab/owi-metadatabase-ext-sdk-tpl)
   - [`owi-metadatabase-soil`](https://github.com/OWI-Lab/owi-metadatabase-soil-sdk),
+  - [`owi-metadatabase-results`](https://github.com/OWI-Lab/owi-metadatabase-results-sdk)
   - `owi-metadatabase-fatigue` (planned)
-  - `owi-metadatabase-results` (planned)
+  - `owi-metadatabase-shm` (planned)
 
 ## Installation
 
@@ -92,11 +93,11 @@ turbine = geometry_api.get_geometry_turbine(turbine_id=123)
 location = locations_api.get_location(location_id=456)
 ```
 
-See the [Quick Start Guide](https://owi-lab.github.io/owi-metadatabase-sdk/getting-started/quickstart/) for more examples.
+See the [How To Guide](https://owi-lab.github.io/owi-metadatabase-sdk/how-to/) for more examples.
 
 ## 🔄 Migration from v0.10.x
 
-If you're migrating from `pwimetadatabase-preprocessor` v0.10.x, see our [Migration Guide](https://owi-lab.github.io/owi-metadatabase-sdk/dev/getting-started/migration/).
+If you're migrating from `pwimetadatabase-preprocessor` v0.10.x, see our [Migration Guide](https://owi-lab.github.io/owi-metadatabase-sdk/how-to/migrate/).
 
 **Key Changes:**
 
@@ -113,7 +114,7 @@ This project uses modern Python tooling:
 - **[invoke](https://www.pyinvoke.org/)**: Task automation
 - **[ruff](https://github.com/astral-sh/ruff)**: Linting and formatting
 - **[pytest](https://pytest.org/)**: Testing with extensive doctest coverage
-- **[MkDocs Material](https://squidfunk.github.io/mkdocs-material/)**: Documentation
+- **[Zensical](https://zensical.org/)**: Documentation
 
 ### Common Tasks
 
@@ -216,7 +217,7 @@ This package was developed as part of:
 | Python        | ![Python Versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)                                           |
 | Tests         | ![Test Status](https://img.shields.io/github/actions/workflow/status/owi-lab/owi-metadatabase-sdk/ci.yml?label=tests) |
 | Coverage      | ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)                                                  |
-| Documentation | ![Docs](https://img.shields.io/badge/docs-mkdocs-blue)                                                                |
+| Documentation | ![Docs](https://img.shields.io/badge/docs-zensical-blue)                                                              |
 | License       | ![License](https://img.shields.io/github/license/owi-lab/owi-metadatabase-sdk)                                        |
 
 ## Related Projects

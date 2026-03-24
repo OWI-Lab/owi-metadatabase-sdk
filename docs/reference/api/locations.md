@@ -10,7 +10,7 @@ API reference for the locations module.
       members:
         - LocationsAPI
 
-## locations.io - API Client
+## locations.io — API Client
 
 ::: owi.metadatabase.locations.io
     options:

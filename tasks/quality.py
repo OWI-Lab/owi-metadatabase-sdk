@@ -8,7 +8,7 @@ The quality checks are:
 
 from typing import Any
 
-from invoke import task
+from invoke.tasks import task
 
 from .colors import Color, colorize
 from .system import PTY

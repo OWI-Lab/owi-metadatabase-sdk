@@ -1,4 +1,4 @@
-# GitHub Workflows
+# CI/CD Flow
 
 This repository uses a release-first CI/CD flow with `publish` as the orchestration point for release-side automation.
 

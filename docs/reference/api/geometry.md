@@ -12,7 +12,7 @@ API reference for the geometry module.
         - OWT
         - OWTs
 
-## geometry.io - API Client
+## geometry.io — API Client
 
 ::: owi.metadatabase.geometry.io
     options:
@@ -20,7 +20,7 @@ API reference for the geometry module.
       show_source: true
       heading_level: 3
 
-## geometry.processing - Data Processing
+## geometry.processing — Data Processing
 
 ::: owi.metadatabase.geometry.processing
     options:
@@ -28,7 +28,7 @@ API reference for the geometry module.
       show_source: true
       heading_level: 3
 
-## geometry.structures - Data Structures
+## geometry.structures — Data Structures
 
 ::: owi.metadatabase.geometry.structures
     options:

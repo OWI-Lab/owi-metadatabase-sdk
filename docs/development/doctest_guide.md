@@ -11,7 +11,7 @@ All public functions should include executable doctest examples.
 
 ## Template
 
-```
+```python
 def function_name(param1: int, param2: str) -> bool:
     """
     Short description.

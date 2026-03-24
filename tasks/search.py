@@ -1,4 +1,4 @@
-from invoke import task
+from invoke.tasks import task
 
 from .system import OperatingSystem, get_current_system
 

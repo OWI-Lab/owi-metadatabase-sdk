@@ -1,23 +1,32 @@
 # Contributing
 
-Thanks for contributing. This project uses uv and invoke for workflows.
-
 ## Setup
 
-```
+```bash
+git clone https://github.com/OWI-Lab/owi-metadatabase-sdk.git
+cd owi-metadatabase-sdk
 uv sync --dev
 ```
 
-## Quality Checks
+## Quality checks
 
-```
-uv run invoke lint
-uv run invoke format
-uv run invoke test
+```bash
+uv run invoke quality.all
 ```
 
-## Pull Requests
+This runs `ruff format`, `ruff check`, and `ty check`.
 
-- Keep changes focused and well scoped
-- Add or update tests for behavior changes
-- Update documentation when behavior changes
+## Tests
+
+```bash
+uv run invoke test.all
+```
+
+This runs pytest with doctests and coverage.
+
+## Pull requests
+
+- Keep changes focused and well-scoped
+- Add or update tests for behaviour changes
+- Update documentation when behaviour changes
+- Follow the existing code style (120-char lines, NumPy docstrings)

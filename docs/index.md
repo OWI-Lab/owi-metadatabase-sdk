@@ -1,81 +1,77 @@
-# OWI-metadatabase SDK
-
-**Core Python SDK for the OWI-Lab metadatabase: geometry and location data**
+# OWI Metadatabase SDK
 
 [![PyPI version](https://img.shields.io/pypi/v/owi-metadatabase)](https://pypi.org/project/owi-metadatabase/)
 [![Python versions](https://img.shields.io/pypi/pyversions/owi-metadatabase)](https://pypi.org/project/owi-metadatabase/)
 [![License](https://img.shields.io/github/license/owi-lab/owi-metadatabase-sdk)](https://github.com/OWI-Lab/owi-metadatabase-sdk/blob/main/LICENSE)
-[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
+[![Documentation](https://img.shields.io/badge/docs-zensical-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
 
-## Overview
+!!! abstract "What is the OWI Metadatabase SDK?"
+    The OWI Metadatabase SDK is a Python package that provides tools for accessing and processing geometry and location data from the OWI-Lab metadatabase for offshore wind installations. It serves as the core package in a modular namespace architecture, with extension packages available for additional domains like soil and results data.
 
-The OWI-metadatabase SDK provides a Python interface to interact with the OWI-Lab metadatabase for offshore wind installations. This core package includes modules for:
+    - **Geometry** — offshore wind turbine geometry data and structural processing
+    - **Locations** — project site and asset location queries
 
-- **Geometry**: Processing and analysis of offshore wind turbine geometry data
-- **Locations**: Handling location and site data for offshore wind farms
-
-## Quick Start
-
-### Installation
+## Get started
 
 ```bash
 pip install owi-metadatabase
 ```
 
-### Basic Usage
-
 ```python
 from owi.metadatabase.geometry.io import GeometryAPI
 from owi.metadatabase.locations.io import LocationsAPI
 
-# Initialize APIs
 geometry_api = GeometryAPI(token="your-token")
 locations_api = LocationsAPI(token="your-token")
-
-# Get geometry data
-turbines = geometry_api.get_turbines(projectsite="YourProject")
-
-# Get location data
-locations = locations_api.get_locations(projectsite="YourProject")
 ```
 
-## Namespace Package Structure
+<div class="grid cards" markdown>
 
-This package follows PEP 420 namespace conventions, allowing for modular extensions:
+-   :lucide-backpack:{ .lg .middle } **Tutorials**
 
-```python
-# Core package
-from owi.metadatabase.geometry import GeometryAPI
-from owi.metadatabase.locations import LocationsAPI
+    ---
 
-# Future extensions (when available)
-# from owi.metadatabase.fatigue import FatigueAPI
-# from owi.metadatabase.soil import SoilAPI
-```
+    Step-by-step lessons to get started
 
-## Documentation
+    [:octicons-arrow-right-24: Start learning](tutorials/index.md)
 
-- **[Getting Started](getting-started/installation.md)** - Installation and quickstart guide
-- **[User Guide](user-guide/overview.md)** - Detailed usage documentation
-- **[API Reference](api/index.md)** - Complete API documentation
+-   :lucide-gamepad-directional:{ .lg .middle } **How-to guides**
 
-## Requirements
+    ---
 
-- Python 3.9+
-- numpy
-- pandas
-- requests
-- plotly
-- matplotlib
-- tqdm
+    Recipes for specific tasks
 
-## License
+    [:octicons-arrow-right-24: Find a guide](how-to/index.md)
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://github.com/OWI-Lab/owi-metadatabase-sdk/blob/main/LICENSE) file for details.
+-   :lucide-book-open:{ .lg .middle } **Reference**
+
+    ---
+
+    Complete API documentation
+
+    [:octicons-arrow-right-24: Browse reference](reference/index.md)
+
+-   :lucide-lightbulb:{ .lg .middle } **Explanation**
+
+    ---
+
+    Architecture and design decisions
+
+    [:octicons-arrow-right-24: Understand the SDK](explanation/index.md)
+
+</div>
+
+## Extension packages
+
+The SDK uses [namespace packages](explanation/namespace-packages.md) so
+additional domains can be installed alongside the core:
+
+| Extension | Install | Import |
+|-----------|---------|--------|
+| [Soil](https://pypi.org/project/owi-metadatabase-soil/) | `pip install "owi-metadatabase[soil]"` | `from owi.metadatabase.soil.io import SoilAPI` |
+| [Results](https://pypi.org/project/owi-metadatabase-results/) | `pip install owi-metadatabase-results` | `from owi.metadatabase.results.io import ResultsAPI` |
 
 ## Citation
-
-If you use this package in your research, please cite:
 
 ```bibtex
 @software{owi_metadatabase_sdk,
@@ -95,4 +91,4 @@ This package was developed as part of the [ETF Smartlife (FOD165)](https://owi-l
 
 - **Issues**: [GitHub Issues](https://github.com/OWI-Lab/owi-metadatabase-sdk/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/OWI-Lab/owi-metadatabase-sdk/discussions)
-- **Email**: [OWI-Lab Contact](mailto:info@owi-lab.be)
+- **Email**: [OWI-Lab Contact](mailto:pietro.dantuono@vub.be)
