@@ -8,7 +8,7 @@ DOC_SCREEN_NAME = "sphinx"
 
 
 class OperatingSystem(Enum):
-    """Represents the operating system."""
+    """Represent the operating system."""
 
     WINDOWS = 'Windows'
     LINUX = 'Linux'
