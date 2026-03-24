@@ -7,7 +7,6 @@ default_stages:
   - pre-commit
   - pre-push
 
-exclude: ^examples/
 fail_fast: true
 
 repos:
