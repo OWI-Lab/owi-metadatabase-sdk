@@ -59,6 +59,22 @@ locations_api = LocationsAPI(token="your-token")
 
     [:octicons-arrow-right-24: Understand the SDK](explanation/index.md)
 
+-   :lucide-waves:{ .lg .middle } **Soil Extension**
+
+    ---
+
+    Extension package for soil data analysis
+
+    [:octicons-arrow-right-24: Learn more](https://owi-lab.github.io/owi-metadatabase-soil-sdk/)
+
+-   :lucide-chart-network:{ .lg .middle } **Results Extension**
+
+    ---
+
+    Extension package for results data analysis
+
+    [:octicons-arrow-right-24: Learn more](https://owi-lab.github.io/owi-metadatabase-results-sdk/)
+
 </div>
 
 ## Extension packages
