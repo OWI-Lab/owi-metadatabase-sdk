@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 from collections.abc import Sequence
+from pathlib import Path
 from typing import Any, overload
 
 import numpy as np
@@ -376,3 +377,13 @@ def hex_to_dec(value: str | Sequence[str]) -> list[float] | list[list[float]]:
     elif isinstance(value, Sequence) and not isinstance(value, (str, bytes)):
         return [_hex_to_dec(v) for v in value]
     raise ValueError("Value must be a string or a list of strings.")
+
+
+def load_token_from_env_file(env_file: Path, env_var: str = "OWI_METADATABASE_API_TOKEN") -> str | None:
+    if not env_file.exists():
+        return None
+    for line in env_file.read_text(encoding="utf-8").splitlines():
+        if line.startswith(f"{env_var}="):
+            token = line.split("=", 1)[1].strip()
+            return token or None
+    return None
