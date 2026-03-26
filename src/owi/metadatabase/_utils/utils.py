@@ -380,6 +380,20 @@ def hex_to_dec(value: str | Sequence[str]) -> list[float] | list[list[float]]:
 
 
 def load_token_from_env_file(env_file: Path, env_var: str = "OWI_METADATABASE_API_TOKEN") -> str | None:
+    """Load a token from an environment file.
+
+    Parameters
+    ----------
+    env_file : Path
+        Path to the environment file.
+    env_var : str, optional
+        Environment variable name, by default "OWI_METADATABASE_API_TOKEN"
+
+    Returns
+    -------
+    str | None
+        The token value if found, otherwise None.
+    """
     if not env_file.exists():
         return None
     for line in env_file.read_text(encoding="utf-8").splitlines():

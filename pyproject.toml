@@ -43,6 +43,9 @@ soil = [
 results = [
     "owi-metadatabase-results >=0.1.1",
 ]
+shm = [
+    "owi-metadatabase-shm >=0.1.0",
+]
 
 
 [dependency-groups]
@@ -153,7 +156,8 @@ known-first-party = ["owi.metadatabase"]
 
 
 [tool.deptry.per_rule_ignores]
-DEP002 = ["plotly", "matplotlib", "pyproj", "tqdm", "owi-metadatabase-soil"]
+DEP002 = ["plotly", "matplotlib", "pyproj", "tqdm", "owi-metadatabase-soil",
+          "owi-metadatabase-results", "owi-metadatabase-shm"]
 DEP003 = ["owi"]
 DEP004 = ["owi"]
 
