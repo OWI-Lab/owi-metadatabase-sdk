@@ -2348,7 +2348,7 @@ requires-dist = [
     { name = "matplotlib", marker = "python_full_version >= '3.10'", specifier = ">=3.10.0" },
     { name = "numpy", marker = "python_full_version < '3.11'", specifier = ">=1.26.0,<2.0.0" },
     { name = "numpy", marker = "python_full_version >= '3.11'", specifier = ">=2.0.0" },
-    { name = "owi-metadatabase-results", marker = "extra == 'results'", specifier = ">=0.1.1" },
+    { name = "owi-metadatabase-results", marker = "extra == 'results'", specifier = ">=0.1.2" },
     { name = "owi-metadatabase-shm", marker = "extra == 'shm'", specifier = ">=0.1.0" },
     { name = "owi-metadatabase-soil", marker = "extra == 'soil'", specifier = ">=0.1.1" },
     { name = "pandas", specifier = ">=2.0.0" },
@@ -2410,7 +2410,7 @@ typing = [
 
 [[package]]
 name = "owi-metadatabase-results"
-version = "0.1.1"
+version = "0.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ipython", version = "8.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
@@ -2426,9 +2426,9 @@ dependencies = [
     { name = "requests" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/de/b1/2e157fc4b1a9fabb46b347e75f4fb2cddc7eeb45d16a60a41880dd0cf678/owi_metadatabase_results-0.1.1.tar.gz", hash = "sha256:ac6e07fd06fd81bd3b43d7e326909804c29d705a0c60af163ba511b4ed3d0c2f", size = 1294316, upload-time = "2026-03-25T10:50:14.269Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1a/a2/2c6db1c6399e0388802e81779d6feb60504c1741b5f76b4b13bae73c9b3a/owi_metadatabase_results-0.1.2.tar.gz", hash = "sha256:11cb4a87d545bb0144db61a357daaca3cc1d2ead2b1751c330b426930d7a3f8e", size = 1319879, upload-time = "2026-03-26T18:02:35.93Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9b/f7/69fb22a0bb65b56154f4ad83458113cc0014baafd7a864dec3e2d64d8519/owi_metadatabase_results-0.1.1-py3-none-any.whl", hash = "sha256:6f90d6a00b1f07d6c8facf92a825f5f5aec8c6948018ae52817465a77278ec5f", size = 68720, upload-time = "2026-03-25T10:50:12.601Z" },
+    { url = "https://files.pythonhosted.org/packages/9e/dc/7061de952ff30e07df82d1e17195feca0287381a21271528606b3f6dcf68/owi_metadatabase_results-0.1.2-py3-none-any.whl", hash = "sha256:94f9ac7a5ad2a22fad38111cb80d89e449c06ff944d5a5436761542a8165c741", size = 70374, upload-time = "2026-03-26T18:02:34.694Z" },
 ]
 
 [[package]]
