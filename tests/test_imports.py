@@ -7,7 +7,7 @@ from owi.metadatabase.locations import LocationsAPI
 
 def test_version():
     """Test that version is accessible."""
-    assert __version__ == "0.1.4"
+    assert __version__ == "0.1.5"
 
 
 def test_geometry_imports():
