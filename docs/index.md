@@ -6,10 +6,11 @@
 [![Documentation](https://img.shields.io/badge/docs-zensical-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
 
 !!! abstract "What is the OWI Metadatabase SDK?"
-    The OWI Metadatabase SDK is a Python package that provides tools for accessing and processing geometry and location data from the OWI-Lab metadatabase for offshore wind installations. It serves as the core package in a modular namespace architecture, with extension packages available for additional domains like soil and results data.
+    The OWI Metadatabase SDK is a Python package that provides tools for accessing and processing geometry and location data from the OWI-Lab metadatabase for offshore wind installations. It serves as the core package in a modular namespace architecture, with optional extras that install the soil, results, and SHM extensions into the same namespace.
 
     - **Geometry** — offshore wind turbine geometry data and structural processing
     - **Locations** — project site and asset location queries
+    - **Extensions** — optional soil, results, and SHM packages installed through core extras
 
 ## Get started
 
@@ -75,6 +76,14 @@ locations_api = LocationsAPI(token="your-token")
 
     [:octicons-arrow-right-24: Learn more](https://owi-lab.github.io/owi-metadatabase-results-sdk/)
 
+-   :lucide-activity:{ .lg .middle } **SHM Extension**
+
+    ---
+
+    Extension package for structural health monitoring workflows
+
+    [:octicons-arrow-right-24: Learn more](https://owi-lab.github.io/owi-metadatabase-shm-sdk/)
+
 </div>
 
 ## Extension packages
@@ -82,10 +91,14 @@ locations_api = LocationsAPI(token="your-token")
 The SDK uses [namespace packages](explanation/namespace-packages.md) so
 additional domains can be installed alongside the core:
 
+See [Extension overview](explanation/extensions.md) for a side-by-side
+comparison of the deployed extras.
+
 | Extension | Install | Import |
 |-----------|---------|--------|
-| [Soil](https://pypi.org/project/owi-metadatabase-soil/) | `pip install "owi-metadatabase[soil]"` | `from owi.metadatabase.soil.io import SoilAPI` |
-| [Results](https://pypi.org/project/owi-metadatabase-results/) | `pip install owi-metadatabase-results` | `from owi.metadatabase.results.io import ResultsAPI` |
+| [Soil](https://pypi.org/project/owi-metadatabase-soil/) | `pip install "owi-metadatabase[soil]"` | `from owi.metadatabase.soil import SoilAPI` |
+| [Results](https://pypi.org/project/owi-metadatabase-results/) | `pip install "owi-metadatabase[results]"` | `from owi.metadatabase.results import ResultsAPI` |
+| [SHM](https://pypi.org/project/owi-metadatabase-shm/) | `pip install "owi-metadatabase[shm]"` | `from owi.metadatabase.shm import ShmAPI` |
 
 ## Citation
 

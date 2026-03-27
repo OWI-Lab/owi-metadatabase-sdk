@@ -39,6 +39,7 @@ nav = [
   { "Explanation" = [
       { "Overview" = "explanation/index.md" },
       { "Architecture" = "explanation/architecture.md" },
+      { "Extension Overview" = "explanation/extensions.md" },
       { "Namespace Packages" = "explanation/namespace-packages.md" },
       { "Data Model" = "explanation/data-model.md" },
   ]},

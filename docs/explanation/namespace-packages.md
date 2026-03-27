@@ -22,13 +22,14 @@ site-packages/
 │       ├── geometry/             # Core SDK
 │       ├── locations/            # Core SDK
 │       ├── soil/                 # From owi-metadatabase-soil
-│       └── results/              # From owi-metadatabase-results
+│       ├── results/              # From owi-metadatabase-results
+│       └── shm/                  # From owi-metadatabase-shm
 ```
 
 ## Why namespace packages?
 
 The OWI Metadatabase covers several data domains — geometry, locations,
-soil, fatigue, structural results. Bundling everything in a single PyPI
+soil, structural results, and structural health monitoring. Bundling everything in a single PyPI
 distribution would force users to install dependencies they do not need.
 
 Namespace packages solve this by allowing each domain to ship as an
@@ -41,10 +42,13 @@ from owi.metadatabase.geometry.io import GeometryAPI
 from owi.metadatabase.locations.io import LocationsAPI
 
 # Soil extension (pip install owi-metadatabase-soil)
-from owi.metadatabase.soil.io import SoilAPI
+from owi.metadatabase.soil import SoilAPI
 
 # Results extension (pip install owi-metadatabase-results)
-from owi.metadatabase.results.io import ResultsAPI
+from owi.metadatabase.results import ResultsAPI
+
+# SHM extension (pip install owi-metadatabase-shm)
+from owi.metadatabase.shm import ShmAPI
 ```
 
 ## Practical implications
@@ -62,6 +66,8 @@ Or as optional extras:
 
 ```bash
 pip install "owi-metadatabase[soil]"
+pip install "owi-metadatabase[results]"
+pip install "owi-metadatabase[shm]"
 ```
 
 ### No `__init__.py` at the `owi/` root and `owi.metadatabase` level

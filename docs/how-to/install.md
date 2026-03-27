@@ -37,6 +37,36 @@ print("Installation successful")
 pip install "owi-metadatabase[soil]"
 ```
 
+### Results extension
+
+```bash
+pip install "owi-metadatabase[results]"
+```
+
+### SHM extension
+
+```bash
+pip install "owi-metadatabase[shm]"
+```
+
+### Multiple extensions together
+
+```bash
+pip install "owi-metadatabase[soil,results,shm]"
+```
+
+## Verify an extension install
+
+```python
+from owi.metadatabase.results import ResultsAPI
+from owi.metadatabase.shm import ShmAPI
+from owi.metadatabase.soil import SoilAPI
+
+print(SoilAPI)
+print(ResultsAPI)
+print(ShmAPI)
+```
+
 ### Documentation tooling
 
 ```bash
@@ -71,4 +101,4 @@ pip install owi-metadatabase
 
 !!! note
     If you use `zsh`, wrap extras in quotes because `[` and `]` are glob
-    characters: `pip install "owi-metadatabase[soil]"`.
+    characters: `pip install "owi-metadatabase[soil,results,shm]"`.

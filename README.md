@@ -10,9 +10,9 @@
 ![Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)
 [![Documentation](https://img.shields.io/badge/docs-zensical-blue)](https://owi-lab.github.io/owi-metadatabase-sdk/)
 
-**Core SDK for OWI-Lab metadatabase: geometry and location data processing.**
+**Core SDK for OWI-Lab metadatabase geometry and location workflows, with optional extras for soil, results, and SHM.**
 
-A modern Python namespace package providing tools for working with offshore wind turbine geometry and location data from the OWI-metadatabase. Built with extensibility in mind using PEP 420 namespace packages.
+A modern Python namespace package providing tools for working with offshore wind turbine geometry and location data from the OWI-metadatabase. The core package stays focused on shared APIs and data access, while optional extras install the soil, results, and structural health monitoring extensions into the same `owi.metadatabase` namespace.
 
 📚 **[Read the Documentation](https://owi-lab.github.io/owi-metadatabase-sdk/)**
 
@@ -21,12 +21,12 @@ A modern Python namespace package providing tools for working with offshore wind
 - **Geometry Module**: Process offshore wind turbine geometries, components, and structures
 - **Locations Module**: Handle geographic location and site data
 - **API Integration**: Seamless connection to OWI-metadatabase API
-- **Extensible**: Namespace package architecture supports future extensions
-  - **Template for future package extensions**: Copier template soon available on [GitHub](https://github.com/OWI-Lab/owi-metadatabase-ext-sdk-tpl)
-  - [`owi-metadatabase-soil`](https://github.com/OWI-Lab/owi-metadatabase-soil-sdk),
+- **Extensible**: Namespace package architecture supports deployed domain extensions
+  - [`owi-metadatabase-soil`](https://github.com/OWI-Lab/owi-metadatabase-soil-sdk)
   - [`owi-metadatabase-results`](https://github.com/OWI-Lab/owi-metadatabase-results-sdk)
+  - [`owi-metadatabase-shm`](https://github.com/OWI-Lab/owi-metadatabase-shm-sdk)
+  - [`owi-metadatabase-ext-sdk-tpl`](https://github.com/OWI-Lab/owi-metadatabase-ext-sdk-tpl) for scaffolding new extensions
   - `owi-metadatabase-fatigue` (planned)
-  - `owi-metadatabase-shm` (planned)
 
 ## Installation
 
@@ -44,21 +44,31 @@ Using uv (recommended for development):
 uv pip install owi-metadatabase
 ```
 
-### Install With Soil Extension
+### Install optional extras
 
 Using pip:
 
 ```bash
 pip install "owi-metadatabase[soil]"
+pip install "owi-metadatabase[results]"
+pip install "owi-metadatabase[shm]"
 ```
 
 Using uv:
 
 ```bash
 uv pip install "owi-metadatabase[soil]"
+uv pip install "owi-metadatabase[results]"
+uv pip install "owi-metadatabase[shm]"
 ```
 
-In `zsh`, keep the extra in quotes because `[` and `]` are treated as glob characters.
+Install multiple extras together when you need more than one extension:
+
+```bash
+pip install "owi-metadatabase[soil,results,shm]"
+```
+
+In `zsh`, keep extras in quotes because `[` and `]` are treated as glob characters.
 
 ### Development Installation
 
@@ -104,7 +114,7 @@ If you're migrating from `pwimetadatabase-preprocessor` v0.10.x, see our [Migrat
 - Package name: `owi-metadatabase-sdk` → `owi-metadatabase`
 - Import path: `owimetadatabase_preprocessor.*` → `owi.metadatabase.*`
 - Removed modules: `fatigue`, `soil`, and `results` (available as package extensions)
-  Importable via: ` from owi.metadatabase.fatigue import FatigueAPI ` (when available)
+- Extension extras now available from the core package: `soil`, `results`, and `shm`
 
 ## Development
 
@@ -153,26 +163,30 @@ src/owi/metadatabase/
 
 ## Extensibility
 
-This package uses PEP 420 namespace packages, allowing modular extensions. Future packages will extend the `owi.metadatabase` namespace:
+This package uses PEP 420 namespace packages, allowing modular extensions. Installed packages can extend the `owi.metadatabase` namespace side by side:
 
-- **`owi-metadatabase-fatigue`** (planned): Fatigue analysis tools
 - **`owi-metadatabase-soil`**: Soil data processing
+- **`owi-metadatabase-results`**: Results querying, typed models, and plotting helpers
+- **`owi-metadatabase-shm`**: Structural health monitoring queries, typed records, and upload workflows
+- **`owi-metadatabase-fatigue`** (planned): Fatigue analysis tools
 - **Your extension**: Create custom extensions using the namespace
 
 All extensions work seamlessly together:
 
 ```python
-from owi.metadatabase.geometry import GeometryAPI     # Base
-from owi.metadatabase.fatigue import FatigueAPI       # Extension
-from owi.metadatabase.soil import SoilAPI             # Extension
+from owi.metadatabase.geometry.io import GeometryAPI
+from owi.metadatabase.results import ResultsAPI
+from owi.metadatabase.shm import ShmAPI
+from owi.metadatabase.soil import SoilAPI
 ```
 
 ## Documentation
 
-- **[Getting Started](https://owi-lab.github.io/owi-metadatabase-sdk/getting-started/installation/)**: Installation and quick start
-- **[User Guide](https://owi-lab.github.io/owi-metadatabase-sdk/user-guide/overview/)**: Comprehensive usage guide
-- **[API Reference](https://owi-lab.github.io/owi-metadatabase-sdk/api/index/)**: Complete API documentation
-- **[Examples](https://owi-lab.github.io/owi-metadatabase-sdk/examples/index/)**: Jupyter notebooks and code examples
+- **[Core SDK docs](https://owi-lab.github.io/owi-metadatabase-sdk/)**: Geometry, locations, and shared architecture
+- **[How-to guides](https://owi-lab.github.io/owi-metadatabase-sdk/how-to/)**: Installation, authentication, and query recipes
+- **[Results extension docs](https://owi-lab.github.io/owi-metadatabase-results-sdk/)**: Results APIs, models, services, and notebooks
+- **[SHM extension docs](https://owi-lab.github.io/owi-metadatabase-shm-sdk/)**: Sensor and signal retrieval, typed services, and upload workflows
+- **[Soil extension docs](https://owi-lab.github.io/owi-metadatabase-soil-sdk/)**: Soil APIs, processing, and visualization
 
 ## Contributing
 

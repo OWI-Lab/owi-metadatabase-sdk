@@ -112,4 +112,5 @@ All public query methods return a dictionary. The standard keys are:
 | `"id"` | `int \| None` | Record ID (single-record queries only) |
 
 This convention is consistent across the core SDK and all extension
-packages (`owi-metadatabase-soil`, `owi-metadatabase-results`).
+packages (`owi-metadatabase-soil`, `owi-metadatabase-results`,
+`owi-metadatabase-shm`).

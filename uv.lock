@@ -1085,6 +1085,18 @@ wheels = [
 ]
 
 [[package]]
+name = "griffe"
+version = "1.15.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "python_full_version >= '3.10'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0d/0c/3a471b6e31951dce2360477420d0a8d1e00dea6cf33b70f3e8c3ab6e28e1/griffe-1.15.0.tar.gz", hash = "sha256:7726e3afd6f298fbc3696e67958803e7ac843c1cfe59734b6251a40cdbfb5eea", size = 424112, upload-time = "2025-11-10T15:03:15.52Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9c/83/3b1d03d36f224edded98e9affd0467630fc09d766c0e56fb1498cbb04a9b/griffe-1.15.0-py3-none-any.whl", hash = "sha256:6f6762661949411031f5fcda9593f586e6ce8340f0ba88921a0f2ef7a81eb9a3", size = 150705, upload-time = "2025-11-10T15:03:13.549Z" },
+]
+
+[[package]]
 name = "griffelib"
 version = "2.0.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2283,6 +2295,7 @@ dev = [
     { name = "bump2version" },
     { name = "deptry", version = "0.23.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "deptry", version = "0.25.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+    { name = "griffe", marker = "python_full_version >= '3.10'" },
     { name = "hypothesis", version = "6.141.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "hypothesis", version = "6.151.9", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "invoke" },
@@ -2315,6 +2328,7 @@ dev-tools = [
     { name = "pre-commit", version = "4.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
 ]
 docs = [
+    { name = "griffe", marker = "python_full_version >= '3.10'" },
     { name = "mkdocstrings-python", marker = "python_full_version >= '3.10'" },
     { name = "pymdown-extensions" },
     { name = "zensical", marker = "python_full_version >= '3.10'" },
@@ -2362,6 +2376,7 @@ provides-extras = ["soil", "results", "shm"]
 dev = [
     { name = "bump2version", specifier = ">=1.0.1" },
     { name = "deptry", specifier = ">=0.23.1" },
+    { name = "griffe", marker = "python_full_version >= '3.10'", specifier = ">=1.14.0,<2.0.0" },
     { name = "hypothesis", specifier = ">=6.100.0" },
     { name = "invoke", specifier = ">=2.2.0" },
     { name = "mkdocstrings-python", marker = "python_full_version >= '3.10'", specifier = ">=1.0.0" },
@@ -2387,6 +2402,7 @@ dev-tools = [
     { name = "pre-commit", specifier = ">=3.0.0" },
 ]
 docs = [
+    { name = "griffe", marker = "python_full_version >= '3.10'", specifier = ">=1.14.0,<2.0.0" },
     { name = "mkdocstrings-python", marker = "python_full_version >= '3.10'", specifier = ">=1.0.0" },
     { name = "pymdown-extensions", specifier = ">=10.0" },
     { name = "zensical", marker = "python_full_version >= '3.10'", specifier = ">=0.0.28" },
