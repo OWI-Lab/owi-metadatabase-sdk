@@ -129,20 +129,17 @@ This project uses modern Python tooling:
 ### Common Tasks
 
 ```bash
-# Run tests
-uv run invoke test.all
+# Run tests and serve coverage report
+uv run inv test
 
 # Build documentation
-uv run invoke docs.build
+uv run inv docs.build
 
 # Serve documentation locally
-uv run invoke docs.serve
+uv run inv docs.serve
 
 # Run code quality checks
-uv run invoke quality.all
-
-# Format code
-uv run invoke quality.format
+uv run inv quality
 ```
 
 ### Project Structure
