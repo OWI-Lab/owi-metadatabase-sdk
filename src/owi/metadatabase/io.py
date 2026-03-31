@@ -215,10 +215,8 @@ class API:
         >>> API.check_request_health(ok)
         """
         if resp.status_code != 200:
-            raise APIConnectionError(
-                message=f"Error {resp.status_code}.\n{resp.reason}",
-                response=resp,
-            )
+            message = f"Error {resp.status_code}.\n{resp.reason}\n{resp.text}"
+            raise APIConnectionError(message=message, response=resp)
 
     @staticmethod
     def output_to_df(response: requests.Response) -> pd.DataFrame:
