@@ -10,7 +10,7 @@ def test_namespace_package_no_file():
     """
     Verify owi is a proper PEP 420 namespace package.
 
-    Namespace packages may have __file__ in Python 3.11+ but should
+    Namespace packages may have __file__ in Python 3.9+ but should
     not have __path__ as a list (it's a _NamespacePath instead).
 
     Examples

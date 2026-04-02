@@ -6,7 +6,7 @@ examples.
 ## Run all tests
 
 ```bash
-uv run invoke test.all
+uv run invoke test
 ```
 
 ## Run only unit tests

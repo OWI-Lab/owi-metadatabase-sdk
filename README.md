@@ -194,8 +194,8 @@ We welcome contributions! Please see our [Contributing Guide](https://owi-lab.gi
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/amazing-feature`
 3. Make your changes with tests and documentation
-4. Run quality checks: `uv run invoke quality.all`
-5. Run tests: `uv run invoke test.all`
+4. Run quality checks: `uv run invoke quality`
+5. Run tests: `uv run invoke test`
 6. Commit your changes: `git commit -m 'feat: add amazing feature'`
 7. Push to the branch: `git push origin feature/amazing-feature`
 8. Open a Pull Request

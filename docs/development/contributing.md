@@ -11,7 +11,7 @@ uv sync --dev
 ## Quality checks
 
 ```bash
-uv run invoke quality.all
+uv run invoke qa
 ```
 
 This runs `ruff format`, `ruff check`, and `ty check`.
@@ -19,7 +19,7 @@ This runs `ruff format`, `ruff check`, and `ty check`.
 ## Tests
 
 ```bash
-uv run invoke test.all
+uv run invoke test
 ```
 
 This runs pytest with doctests and coverage.
