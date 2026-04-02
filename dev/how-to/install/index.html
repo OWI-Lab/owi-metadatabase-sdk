@@ -753,6 +753,56 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#results-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shm-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHM extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-extensions-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple extensions together
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-an-extension-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify an extension install
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verify an extension install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#documentation-tooling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1404,6 +1454,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../explanation/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../explanation/namespace-packages/" class="md-nav__link">
         
   
@@ -1918,6 +1996,56 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#results-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Results extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shm-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SHM extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-extensions-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple extensions together
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-an-extension-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify an extension install
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Verify an extension install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#documentation-tooling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2023,27 +2151,45 @@
 <h3 id="soil-extension">Soil extension<a class="headerlink" href="#soil-extension" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;owi-metadatabase[soil]&quot;</span>
 </span></code></pre></div>
+<h3 id="results-extension">Results extension<a class="headerlink" href="#results-extension" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;owi-metadatabase[results]&quot;</span>
+</span></code></pre></div>
+<h3 id="shm-extension">SHM extension<a class="headerlink" href="#shm-extension" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;owi-metadatabase[shm]&quot;</span>
+</span></code></pre></div>
+<h3 id="multiple-extensions-together">Multiple extensions together<a class="headerlink" href="#multiple-extensions-together" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;owi-metadatabase[soil,results,shm]&quot;</span>
+</span></code></pre></div>
+<h2 id="verify-an-extension-install">Verify an extension install<a class="headerlink" href="#verify-an-extension-install" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">owi.metadatabase.results</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResultsAPI</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">owi.metadatabase.shm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShmAPI</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">owi.metadatabase.soil</span><span class="w"> </span><span class="kn">import</span> <span class="n">SoilAPI</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">SoilAPI</span><span class="p">)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">ResultsAPI</span><span class="p">)</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">ShmAPI</span><span class="p">)</span>
+</span></code></pre></div>
 <h3 id="documentation-tooling">Documentation tooling<a class="headerlink" href="#documentation-tooling" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>docs
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>docs
 </span></code></pre></div>
 <h3 id="full-development-environment">Full development environment<a class="headerlink" href="#full-development-environment" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>uv<span class="w"> </span>sync<span class="w"> </span>--dev
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>uv<span class="w"> </span>sync<span class="w"> </span>--dev
 </span></code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="import-errors-after-upgrade">Import errors after upgrade<a class="headerlink" href="#import-errors-after-upgrade" title="Permanent link">&para;</a></h3>
 <p>Make sure the old package is fully removed before installing the new one:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>owimetadatabase-preprocessor
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>pip<span class="w"> </span>install<span class="w"> </span>owi-metadatabase
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>owimetadatabase-preprocessor
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>pip<span class="w"> </span>install<span class="w"> </span>owi-metadatabase
 </span></code></pre></div>
 <h3 id="namespace-package-conflicts">Namespace package conflicts<a class="headerlink" href="#namespace-package-conflicts" title="Permanent link">&para;</a></h3>
 <p>If imports fail with <code>ModuleNotFoundError</code>, remove stale installations:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>owi-metadatabase-sdk<span class="w"> </span>owimetadatabase-preprocessor
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>pip<span class="w"> </span>install<span class="w"> </span>owi-metadatabase
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>owi-metadatabase-sdk<span class="w"> </span>owimetadatabase-preprocessor
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>pip<span class="w"> </span>install<span class="w"> </span>owi-metadatabase
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you use <code>zsh</code>, wrap extras in quotes because <code>[</code> and <code>]</code> are glob
-characters: <code>pip install "owi-metadatabase[soil]"</code>.</p>
+characters: <code>pip install "owi-metadatabase[soil,results,shm]"</code>.</p>
 </div>
 
 

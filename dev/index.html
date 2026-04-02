@@ -1332,6 +1332,34 @@
   
   
     <li class="md-nav__item">
+      <a href="./explanation/extensions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="./explanation/namespace-packages/" class="md-nav__link">
         
   
@@ -1869,10 +1897,11 @@
 <a href="https://owi-lab.github.io/owi-metadatabase-sdk/"><img alt="Documentation" src="https://img.shields.io/badge/docs-zensical-blue" /></a></p>
 <div class="admonition abstract">
 <p class="admonition-title">What is the OWI Metadatabase SDK?</p>
-<p>The OWI Metadatabase SDK is a Python package that provides tools for accessing and processing geometry and location data from the OWI-Lab metadatabase for offshore wind installations. It serves as the core package in a modular namespace architecture, with extension packages available for additional domains like soil and results data.</p>
+<p>The OWI Metadatabase SDK is a Python package that provides tools for accessing and processing geometry and location data from the OWI-Lab metadatabase for offshore wind installations. It serves as the core package in a modular namespace architecture, with optional extras that install the soil, results, and SHM extensions into the same namespace.</p>
 <ul>
 <li><strong>Geometry</strong> — offshore wind turbine geometry data and structural processing</li>
 <li><strong>Locations</strong> — project site and asset location queries</li>
+<li><strong>Extensions</strong> — optional soil, results, and SHM packages installed through core extras</li>
 </ul>
 </div>
 <h2 id="get-started">Get started<a class="headerlink" href="#get-started" title="Permanent link">&para;</a></h2>
@@ -1922,11 +1951,19 @@
 <p>Extension package for results data analysis</p>
 <p><a href="https://owi-lab.github.io/owi-metadatabase-results-sdk/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Learn more</a></p>
 </li>
+<li>
+<p><span class="twemoji lg middle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg></span> <strong>SHM Extension</strong></p>
+<hr />
+<p>Extension package for structural health monitoring workflows</p>
+<p><a href="https://owi-lab.github.io/owi-metadatabase-shm-sdk/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span> Learn more</a></p>
+</li>
 </ul>
 </div>
 <h2 id="extension-packages">Extension packages<a class="headerlink" href="#extension-packages" title="Permanent link">&para;</a></h2>
 <p>The SDK uses <a href="explanation/namespace-packages/">namespace packages</a> so
 additional domains can be installed alongside the core:</p>
+<p>See <a href="explanation/extensions/">Extension overview</a> for a side-by-side
+comparison of the deployed extras.</p>
 <table>
 <thead>
 <tr>
@@ -1939,12 +1976,17 @@ additional domains can be installed alongside the core:</p>
 <tr>
 <td><a href="https://pypi.org/project/owi-metadatabase-soil/">Soil</a></td>
 <td><code>pip install "owi-metadatabase[soil]"</code></td>
-<td><code>from owi.metadatabase.soil.io import SoilAPI</code></td>
+<td><code>from owi.metadatabase.soil import SoilAPI</code></td>
 </tr>
 <tr>
 <td><a href="https://pypi.org/project/owi-metadatabase-results/">Results</a></td>
-<td><code>pip install owi-metadatabase-results</code></td>
-<td><code>from owi.metadatabase.results.io import ResultsAPI</code></td>
+<td><code>pip install "owi-metadatabase[results]"</code></td>
+<td><code>from owi.metadatabase.results import ResultsAPI</code></td>
+</tr>
+<tr>
+<td><a href="https://pypi.org/project/owi-metadatabase-shm/">SHM</a></td>
+<td><code>pip install "owi-metadatabase[shm]"</code></td>
+<td><code>from owi.metadatabase.shm import ShmAPI</code></td>
 </tr>
 </tbody>
 </table>
